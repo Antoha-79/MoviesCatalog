@@ -21,7 +21,7 @@ enum SectionsOfMain: String, CaseIterable {
         }
     }
     
-    var quantity: Int {
+    var quantity: Int {   // вроде нигде пока не использовал это ((
         switch self {
         case .top: return     topFilms.count
         case .new: return     newFilms.count
