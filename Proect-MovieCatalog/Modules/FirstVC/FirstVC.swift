@@ -12,9 +12,6 @@ class FirstVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Sec
     @IBOutlet private weak var menuCollectionView: UICollectionView!
     @IBOutlet private weak var tableView: UITableView!
     
-    let mainMenu = ["Каталог", "Магазин", "Покупки", "Загрузки"]
-
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,6 +61,18 @@ class FirstVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Sec
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SectionsTableViewCell", for: indexPath) as? SectionsTableViewCell
+        
+        if indexPath.section < SectionsOfMain.allStringCases.firstIndex(of: "ТОП") ?? 3 {
+            cell?.sectionButton.isHidden = true
+            cell?.sectionLabel.isHidden = true
+            cell?.seeAllLabel.isHidden = true
+            cell?.currentSectionOfTable = indexPath.section
+            
+            cell?.delegate = self
+            cell?.indexPath = indexPath
+            
+                return cell ?? UITableViewCell()
+        } else {
 
         cell?.sectionLabel.text = SectionsOfMain.allStringCases[indexPath.section]
         cell?.seeAllLabel.text = "Все"
@@ -72,7 +81,8 @@ class FirstVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Sec
         cell?.delegate = self
         cell?.indexPath = indexPath
         
-        return cell ?? UITableViewCell()
+            return cell ?? UITableViewCell()
+        }
     }
     
     func openFilmsOfSection(at index: IndexPath) {

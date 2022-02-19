@@ -8,7 +8,12 @@
 import Foundation
 import UIKit
 
+let mainMenu = ["Каталог", "Магазин", "Покупки", "Загрузки"]
+
 enum SectionsOfMain: String, CaseIterable {
+    case appName = "MyMovie" // название приложения
+    case menu = "mainMenu" // главное меню
+    case banner = "banner" // статичный баннер-картинка
     case top = "ТОП"
     case new = "Новинки"
     case serials = "Сериалы"
@@ -23,6 +28,9 @@ enum SectionsOfMain: String, CaseIterable {
     
     var quantity: Int {   // вроде нигде пока не использовал это ((
         switch self {
+        case .appName: return 1
+        case .menu: return    mainMenu.count
+        case .banner: return  1
         case .top: return     topFilms.count
         case .new: return     newFilms.count
         case .serials: return serialsFilms.count
