@@ -9,7 +9,7 @@ import UIKit
 
 class FirstVC: UIViewController, UITableViewDelegate, UITableViewDataSource, SectionButtonDelegate {
     
-    @IBOutlet private weak var menuCollectionView: UICollectionView!
+   
     @IBOutlet private weak var tableView: UITableView!
     
     
@@ -18,9 +18,6 @@ class FirstVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Sec
 
         tableView.delegate = self
         tableView.dataSource = self
-        menuCollectionView.delegate = self
-        menuCollectionView.dataSource = self
-        
     
         moviesInSections.append(topFilms)
         moviesInSections.append(newFilms)
@@ -34,45 +31,32 @@ class FirstVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Sec
         SectionsOfMain.allCases.count
     }
     
-/*   // решил заголовки секций через label сделать в таблице
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        
-        return SectionsOfMain.allStringCases[section]
-    }
-
-
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-
-    let myLabel = UILabel()
-    myLabel.frame = CGRect(x: 0, y: 2, width: 200, height: 24)
-    myLabel.font = UIFont.boldSystemFont(ofSize: 20)
-    myLabel.text = self.tableView(tableView, titleForHeaderInSection: section)
-
-    let headerView = UIView()
-    headerView.addSubview(myLabel)
-
-    return headerView
-    }
-*/
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SectionsTableViewCell", for: indexPath) as? SectionsTableViewCell
-        
-        if indexPath.section < SectionsOfMain.allStringCases.firstIndex(of: "ТОП") ?? 3 {
-            cell?.sectionButton.isHidden = true
-            cell?.sectionLabel.isHidden = true
-            cell?.seeAllLabel.isHidden = true
-            cell?.currentSectionOfTable = indexPath.section
+        if indexPath.section == SectionsOfMain.allStringCases.firstIndex(of: "MyMovie") ?? 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AppNameTableViewCell", for: indexPath) as? AppNameTableViewCell
             
-            cell?.delegate = self
+                return cell ?? UITableViewCell()
+            
+        } else if indexPath.section == SectionsOfMain.allStringCases.firstIndex(of: "mainMenu") ?? 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell", for: indexPath) as? MenuTableViewCell
+            cell?.currentSectionOfTable = indexPath.section
             cell?.indexPath = indexPath
             
                 return cell ?? UITableViewCell()
+            
+            
+        } else if indexPath.section == SectionsOfMain.allStringCases.firstIndex(of: "banner") ?? 2 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "BannerTableViewCell", for: indexPath) as? BannerTableViewCell
+                
+            return cell ?? UITableViewCell()
+            
         } else {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SectionsTableViewCell", for: indexPath) as? SectionsTableViewCell
 
         cell?.sectionLabel.text = SectionsOfMain.allStringCases[indexPath.section]
         cell?.seeAllLabel.text = "Все"
@@ -94,8 +78,19 @@ class FirstVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Sec
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 289.0
+        
+        if indexPath.section == 0 {
+            return 30.0
+        } else if indexPath.section == 1 {
+            return 30.0
+            
+        } else if indexPath.section == 2 {
+            return 192.0
+            
+        } else {
+            return 289.0
     }
+}
   
  /*  // ПРОПИСАТЬ как будет сверстан экран "о фильме"
   
@@ -116,20 +111,3 @@ class FirstVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Sec
 }
 
 
-extension FirstVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return mainMenu.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MenuCollectionViewCell", for: indexPath) as? MenuCollectionViewCell
-        cell?.menuLabel.text = mainMenu[indexPath.row]
-        return cell ?? UICollectionViewCell()
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (UIScreen.main.bounds.width - 30.0) / 3.5, height: 26)
-    }
-    
-}

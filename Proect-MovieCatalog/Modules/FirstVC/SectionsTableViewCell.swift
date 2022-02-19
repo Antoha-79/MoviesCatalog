@@ -21,7 +21,6 @@ class SectionsTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
     
     var delegate: SectionButtonDelegate!
     var indexPath: IndexPath!
-    
     var currentSectionOfTable: Int!
     
     
@@ -39,11 +38,11 @@ class SectionsTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if currentSectionOfTable != SectionsOfMain.allStringCases.firstIndex(of: "Жанры") {
-            return moviesInSections[currentSectionOfTable].count
+            return moviesInSections[currentSectionOfTable - 3].count
         } else {
             return Genres.allStringCases.count
-        }
-    } 
+    }
+}
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SectionsCollectionViewCell", for: indexPath) as? SectionsCollectionViewCell
@@ -52,7 +51,7 @@ class SectionsTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
           //  return cell ?? UICollectionViewCell()
     
              if currentSectionOfTable != SectionsOfMain.allStringCases.firstIndex(of: "Жанры") {
-                 cell?.setup(movie: moviesInSections[currentSectionOfTable][indexPath.row])
+                 cell?.setup(movie: moviesInSections[currentSectionOfTable - 3][indexPath.row])
              } else {
                  cell?.setup2(genre: Genres.allCases[indexPath.row])
              }

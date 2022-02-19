@@ -16,10 +16,10 @@ class listOfMoviesVC: UIViewController, UICollectionViewDataSource, UICollection
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if currentSectionOfTable != SectionsOfMain.allStringCases.firstIndex(of: "Жанры") {
-            return moviesInSections[currentSectionOfTable].count
+            return moviesInSections[currentSectionOfTable - 3].count
         } else {
             //return Genres.allStringCases.count  //ВНИМАНИЕ - переделать на список апо жанру
-            return moviesInSections[currentSectionOfTable].count // ВРЕМЕННО
+            return moviesInSections[currentSectionOfTable - 3].count // ВРЕМЕННО - нужно как-то к картинкам привязать жанры
         }
     }
     
@@ -30,10 +30,10 @@ class listOfMoviesVC: UIViewController, UICollectionViewDataSource, UICollection
           //  return cell ?? UICollectionViewCell()
     
              if currentSectionOfTable != SectionsOfMain.allStringCases.firstIndex(of: "Жанры") {
-                 cell?.setup(movie: moviesInSections[currentSectionOfTable][indexPath.row])
+                 cell?.setup(movie: moviesInSections[currentSectionOfTable - 3][indexPath.row])
              } else {
                 // cell?.setup2(genre: Genres.allCases[indexPath.row]) //- переделать
-                 cell?.setup(movie: moviesInSections[currentSectionOfTable][indexPath.row]) //временно
+                 cell?.setup(movie: moviesInSections[currentSectionOfTable - 3][indexPath.row]) //временно
              }
              return cell ?? UICollectionViewCell()
         
