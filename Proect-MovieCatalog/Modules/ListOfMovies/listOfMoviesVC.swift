@@ -62,14 +62,39 @@ class listOfMoviesVC: UIViewController, UICollectionViewDataSource, UICollection
         collectionView.dataSource = self
         collectionView.delegate = self
         
-      /*
-        let style = NSMutableParagraphStyle()
-        style.alignment = .right
-        navigationController?.navigationBar.titleTextAttributes = [.paragraphStyle: style]   */
+
+        setLeftAlignTitleView(font: .systemFont(ofSize: 20, weight: .bold), text: "На главную", textColor: .black)
+ 
   
     }
     
-
   
+    func setLeftAlignTitleView(font: UIFont, text: String, textColor: UIColor) {
+        guard let navFrame = navigationController?.navigationBar.frame else{
+            return
+        }
+        
+        let parentView = UIView(frame: CGRect(x: 0, y: 0, width: navFrame.width, height: navFrame.height))
+        self.navigationItem.titleView = parentView
+        
+        let label = UILabel(frame: .init(x: parentView.frame.minX, y: parentView.frame.minY, width: parentView.frame.width, height: parentView.frame.height))
+        label.backgroundColor = .clear
+        label.numberOfLines = 1
+        label.font = font
+        label.textAlignment = .left
+        label.textColor = textColor
+        label.text = text
+        
+        parentView.addSubview(label)
+    }
+    
+    @IBAction private func backDidTap() {
+        
+        navigationController?.popViewController(animated: true)
+    }
+    
 
 }
+
+
+

@@ -276,7 +276,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1839.1304347826087" y="81.696428571428569"/>
+            <point key="canvasLocation" x="1661" y="82"/>
         </scene>
         <!--List Of MoviesVC-->
         <scene sceneID="SBt-z0-Fzp">
@@ -287,7 +287,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gY2-3x-816">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="8" minimumInteritemSpacing="8" id="pbW-ae-wda">
                                     <size key="itemSize" width="206" height="268"/>
@@ -357,14 +357,39 @@
                             <constraint firstItem="BGQ-Py-3FJ" firstAttribute="trailing" secondItem="gY2-3x-816" secondAttribute="trailing" id="kXY-ef-igw"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="aHO-Kt-E5O"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="aHO-Kt-E5O">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="arrow.left" catalog="system" id="W73-XW-kom">
+                            <color key="tintColor" systemColor="labelColor"/>
+                            <connections>
+                                <action selector="backDidTap" destination="aqD-9r-hu4" id="Z83-uc-zOA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="gY2-3x-816" id="ZeA-rC-9GW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="czP-38-pyx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3681.1594202898555" y="81.696428571428569"/>
+            <point key="canvasLocation" x="3212" y="-208"/>
+        </scene>
+        <!--The MovieVC-->
+        <scene sceneID="0wg-mv-zO0">
+            <objects>
+                <viewController storyboardIdentifier="TheMovieVC" id="r2W-QG-Ktm" customClass="TheMovieVC" customModule="Proect_MovieCatalog" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Til-gd-iUy">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="cB4-Hv-sOg"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Ur8-JF-Oz5"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rG9-c5-yjh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3771" y="469"/>
         </scene>
         <!--Добавить в каталог-->
         <scene sceneID="SO0-6U-HDX">
@@ -529,7 +554,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3wV-4y-eku" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1700" y="-702"/>
+            <point key="canvasLocation" x="967" y="-769"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Zr7-o4-T1H">
@@ -547,7 +572,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K6r-7f-qMe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="780" y="-702"/>
+            <point key="canvasLocation" x="203" y="-769"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="5qY-Uc-Z1E">
@@ -568,7 +593,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OFI-5d-11h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2907.2463768115945" y="81.696428571428569"/>
+            <point key="canvasLocation" x="2470" y="-207"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hlx-dj-2rS">
@@ -588,8 +613,27 @@
             </objects>
             <point key="canvasLocation" x="928.98550724637687" y="81.696428571428569"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="iuL-7R-8zS">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rjC-d3-5qe" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Yw8-Nc-Lo8">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="r2W-QG-Ktm" kind="relationship" relationship="rootViewController" id="5Ik-rD-Z6O"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UKF-U3-UHw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3000" y="469"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="arrow.left" catalog="system" width="128" height="98"/>
         <image name="top_poster" width="1280" height="623"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
