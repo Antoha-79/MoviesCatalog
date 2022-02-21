@@ -61,7 +61,12 @@ class listOfMoviesVC: UIViewController, UICollectionViewDataSource, UICollection
         
         collectionView.dataSource = self
         collectionView.delegate = self
-       
+        
+      /*
+        let style = NSMutableParagraphStyle()
+        style.alignment = .right
+        navigationController?.navigationBar.titleTextAttributes = [.paragraphStyle: style]   */
+  
     }
     
 

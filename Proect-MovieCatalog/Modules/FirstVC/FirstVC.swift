@@ -12,18 +12,45 @@ class FirstVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Sec
    
     @IBOutlet private weak var tableView: UITableView!
     
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+
+        let hideLeftButton: Bool = velocity.y < 0 ? true : false
+
+        UIView.animate(withDuration: 0.1, delay: 0, options: UIView.AnimationOptions(), animations: {
+            self.navigationItem.leftBarButtonItem?.customView?.isHidden = hideLeftButton
+
+        }, completion: nil)
+        
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.delegate = self
         tableView.dataSource = self
-    
+        
+        setupTitle()
+        
         moviesInSections.append(topFilms)
         moviesInSections.append(newFilms)
         moviesInSections.append(serialsFilms)
         moviesInSections.append(actionFilms)
         moviesInSections.append(filmsByGenre(genre: .comedy))
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationItem.leftBarButtonItem?.customView?.isHidden = true
+    }
+    
+    func setupTitle() {
+        let titleLabel = UILabel()
+        titleLabel.text = "Главное"
+        titleLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        titleLabel.sizeToFit()
+
+            let leftItem = UIBarButtonItem(customView: titleLabel)
+            self.navigationItem.leftBarButtonItem = leftItem
     }
     
     
@@ -80,9 +107,9 @@ class FirstVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Sec
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         if indexPath.section == 0 {
-            return 30.0
+            return 50.0
         } else if indexPath.section == 1 {
-            return 30.0
+            return 45.0
             
         } else if indexPath.section == 2 {
             return 192.0

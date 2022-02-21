@@ -40,11 +40,24 @@ extension MenuTableViewCell: UICollectionViewDataSource, UICollectionViewDelegat
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MenuCollectionViewCell", for: indexPath) as? MenuCollectionViewCell
         cell?.menuLabel.text = mainMenu[indexPath.row]
+        if indexPath.row == 0 {
+            cell?.menuLabel.textColor = .black
+        } else {
+            cell?.menuLabel.textColor = .gray
+        }
+
         return cell ?? UICollectionViewCell()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (UIScreen.main.bounds.width - 30.0) / 3.5, height: 26)
+        return CGSize(width: (UIScreen.main.bounds.width - 30.0) / 3.5, height: 30)
     }
+  
+ /*
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        indexPath.row
+        
+        
+    }  */
     
 }
