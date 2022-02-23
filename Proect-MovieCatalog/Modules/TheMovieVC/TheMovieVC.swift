@@ -9,12 +9,16 @@ import UIKit
 
 class TheMovieVC: UIViewController {
     
+    @IBOutlet weak var backgroundImageView: UIImageView!
     
+    
+    var movie: Movie!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        backgroundImageView.image = movie.image
+     
     }
     
 

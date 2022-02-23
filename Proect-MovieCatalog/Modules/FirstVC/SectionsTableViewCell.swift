@@ -11,21 +11,27 @@ protocol SectionButtonDelegate {
     func openFilmsOfSection(at index:IndexPath)
 }
 
+protocol SelectedCollectionCellDelegate {
+    func openFilm(_ movie: Movie)
+}
+
 class SectionsTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    
+
    
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet weak var sectionLabel: UILabel!
     @IBOutlet weak var seeAllLabel: UILabel!
     @IBOutlet weak var sectionButton: UIButton!
     
-    var delegate: SectionButtonDelegate!
-    var indexPath: IndexPath!
     var currentSectionOfTable: Int!
+    var indexPath: IndexPath!
+    
+    var delegate: SectionButtonDelegate?
+    var cellDelegate: SelectedCollectionCellDelegate?
     
     
     @IBAction func sectionButton(_ sender: UIButton) {
-        self.delegate.openFilmsOfSection(at: indexPath)
+        self.delegate?.openFilmsOfSection(at: indexPath)
         
     }
 
@@ -46,9 +52,6 @@ class SectionsTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SectionsCollectionViewCell", for: indexPath) as? SectionsCollectionViewCell
-       
-          // cell?.setup(movie: moviesInSections[currentSectionOfTable][indexPath.row])
-          //  return cell ?? UICollectionViewCell()
     
              if currentSectionOfTable != SectionsOfMain.allStringCases.firstIndex(of: "Жанры") {
                  cell?.setup(movie: moviesInSections[currentSectionOfTable - 3][indexPath.row])
@@ -67,14 +70,18 @@ class SectionsTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
         }
        // return CGSize(width: (UIScreen.main.bounds.width - 30.0 - 15*2) / 3, height: 210)
     }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedMovie: Movie!
+        selectedMovie = moviesInSections[currentSectionOfTable - 3][indexPath.row]  
+        self.cellDelegate?.openFilm(selectedMovie)
+       
+    }
+    
+    
+    
+    
+    
 }
 
-
-
-/*  может пригодиться
- /// Returns the index path that corresponds to the given title / index. (e.g. "B",1)
- /// Return an index path with a single index to indicate an entire section, instead of a specific item.
-
-func collectionView(_ collectionView: UICollectionView, indexPathForIndexTitle title: String, at index: Int) -> IndexPath
-}
- */

@@ -378,18 +378,32 @@
         <!--The MovieVC-->
         <scene sceneID="0wg-mv-zO0">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rG9-c5-yjh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="TheMovieVC" id="r2W-QG-Ktm" customClass="TheMovieVC" customModule="Proect_MovieCatalog" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Til-gd-iUy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OhC-EL-hUE">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="cB4-Hv-sOg"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="OhC-EL-hUE" firstAttribute="top" secondItem="Til-gd-iUy" secondAttribute="topMargin" constant="-88" id="57f-8J-Ftz"/>
+                            <constraint firstItem="OhC-EL-hUE" firstAttribute="leading" secondItem="Til-gd-iUy" secondAttribute="leadingMargin" constant="-20" id="mUy-Ss-Bue"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="OhC-EL-hUE" secondAttribute="bottom" constant="-34" id="rCu-Xq-cal"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="OhC-EL-hUE" secondAttribute="trailing" constant="-20" id="t1s-jL-1Bt"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Ur8-JF-Oz5"/>
+                    <connections>
+                        <outlet property="backgroundImageView" destination="OhC-EL-hUE" id="1du-p4-pQu"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rG9-c5-yjh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3771" y="469"/>
+            <point key="canvasLocation" x="3769.5652173913045" y="468.75"/>
         </scene>
         <!--Добавить в каталог-->
         <scene sceneID="SO0-6U-HDX">

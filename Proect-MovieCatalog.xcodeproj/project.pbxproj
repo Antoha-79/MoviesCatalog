@@ -25,6 +25,7 @@
 		5E7ACA9127C127A200074EB3 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7ACA9027C127A200074EB3 /* MenuTableViewCell.swift */; };
 		5E7ACA9327C127BC00074EB3 /* BannerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7ACA9227C127BC00074EB3 /* BannerTableViewCell.swift */; };
 		5E7ACA9827C3DE3C00074EB3 /* TheMovieVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7ACA9727C3DE3C00074EB3 /* TheMovieVC.swift */; };
+		5E8A27FC27C503F600B53B52 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8A27FB27C503F600B53B52 /* NetworkService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		5E7ACA9027C127A200074EB3 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		5E7ACA9227C127BC00074EB3 /* BannerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerTableViewCell.swift; sourceTree = "<group>"; };
 		5E7ACA9727C3DE3C00074EB3 /* TheMovieVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheMovieVC.swift; sourceTree = "<group>"; };
+		5E8A27FB27C503F600B53B52 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 		5E0F4DB527A7212700B55942 /* Proect-MovieCatalog */ = {
 			isa = PBXGroup;
 			children = (
+				5E8A27FA27C503B600B53B52 /* Services */,
 				5E0F4DCF27A7222100B55942 /* Model */,
 				5E0F4DD127A722D800B55942 /* Modules */,
 				5E0F4DD027A7223900B55942 /* Resources */,
@@ -167,6 +170,14 @@
 			path = AdminPanel;
 			sourceTree = "<group>";
 		};
+		5E8A27FA27C503B600B53B52 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				5E8A27FB27C503F600B53B52 /* NetworkService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -248,6 +259,7 @@
 				5E0F4DD927A8230100B55942 /* addNewMovieVC.swift in Sources */,
 				5E72C29127B5444800035D36 /* listOfMoviesVC.swift in Sources */,
 				5E0F4DC127A7212700B55942 /* Proect_MovieCatalog.xcdatamodeld in Sources */,
+				5E8A27FC27C503F600B53B52 /* NetworkService.swift in Sources */,
 				5E7ACA9827C3DE3C00074EB3 /* TheMovieVC.swift in Sources */,
 				5E7ACA9127C127A200074EB3 /* MenuTableViewCell.swift in Sources */,
 				5E0F4DD727A73BB200B55942 /* SectionsCollectionViewCell.swift in Sources */,

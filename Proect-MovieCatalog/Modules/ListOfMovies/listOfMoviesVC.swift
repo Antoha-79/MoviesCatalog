@@ -49,6 +49,13 @@ class listOfMoviesVC: UIViewController, UICollectionViewDataSource, UICollection
        // return CGSize(width: (UIScreen.main.bounds.width - 30.0 - 15*2) / 3, height: 210)
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedMovie = moviesInSections[currentSectionOfTable - 3][indexPath.row]
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let nextVC = storyboard.instantiateViewController(withIdentifier: "TheMovieVC") as! TheMovieVC
+        nextVC.movie = selectedMovie
+        navigationController?.pushViewController(nextVC, animated: true)
+    }
     
     
    

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FirstVC: UIViewController, UITableViewDelegate, UITableViewDataSource, SectionButtonDelegate {
+class FirstVC: UIViewController, UITableViewDelegate, UITableViewDataSource, SectionButtonDelegate, SelectedCollectionCellDelegate {
     
    
     @IBOutlet private weak var tableView: UITableView!
@@ -62,6 +62,10 @@ class FirstVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Sec
         return 1
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == SectionsOfMain.allStringCases.firstIndex(of: "MyMovie") ?? 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AppNameTableViewCell", for: indexPath) as? AppNameTableViewCell
@@ -75,7 +79,6 @@ class FirstVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Sec
             
                 return cell ?? UITableViewCell()
             
-            
         } else if indexPath.section == SectionsOfMain.allStringCases.firstIndex(of: "banner") ?? 2 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "BannerTableViewCell", for: indexPath) as? BannerTableViewCell
                 
@@ -84,26 +87,19 @@ class FirstVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Sec
         } else {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "SectionsTableViewCell", for: indexPath) as? SectionsTableViewCell
-
         cell?.sectionLabel.text = SectionsOfMain.allStringCases[indexPath.section]
         cell?.seeAllLabel.text = "Все"
         cell?.currentSectionOfTable = indexPath.section
         
         cell?.delegate = self
+        cell?.cellDelegate = self
         cell?.indexPath = indexPath
         
             return cell ?? UITableViewCell()
         }
     }
     
-    func openFilmsOfSection(at index: IndexPath) {
-         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-         let nextVC = storyboard.instantiateViewController(withIdentifier: "listOfMoviesVC") as! listOfMoviesVC
-        nextVC.currentSectionOfTable = index.section
-        navigationController?.pushViewController(nextVC, animated: true)
-       
-    }
-    
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         if indexPath.section == 0 {
@@ -118,23 +114,22 @@ class FirstVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Sec
             return 289.0
     }
 }
-  
- /*  // ПРОПИСАТЬ как будет сверстан экран "о фильме"
-  
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
-        let nextVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AboutMovieVC") as? AboutMovieVC
-        nextVC?.person = persons[indexPath.row]
-        present(nextVC!, animated: true, completion: nil)
+    
+    func openFilmsOfSection(at index: IndexPath) {
+         let storyboard = UIStoryboard(name: "Main", bundle: nil)
+         let nextVC = storyboard.instantiateViewController(withIdentifier: "listOfMoviesVC") as! listOfMoviesVC
+        nextVC.currentSectionOfTable = index.section
+        navigationController?.pushViewController(nextVC, animated: true)
+       
     }
- */
     
+    func openFilm(_ movie: Movie) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let nextVC = storyboard.instantiateViewController(withIdentifier: "TheMovieVC") as! TheMovieVC
+        nextVC.movie = movie
+        navigationController?.pushViewController(nextVC, animated: true)
+    }
     
   
-    
-
 
 }
-
-
