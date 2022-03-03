@@ -384,22 +384,114 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OhC-EL-hUE">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="ben-BT-Ngb">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BannerTablVwCell" rowHeight="369" id="1xe-KU-ZY1" customClass="BannerTablVwCell" customModule="Proect_MovieCatalog" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="369"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1xe-KU-ZY1" id="Hdw-lp-Vde">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="369"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zb7-Lz-AYd">
+                                                    <rect key="frame" x="20" y="11" width="374" height="347"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Zb7-Lz-AYd" secondAttribute="trailing" id="BJ5-Dk-HYE"/>
+                                                <constraint firstItem="Zb7-Lz-AYd" firstAttribute="leading" secondItem="Hdw-lp-Vde" secondAttribute="leadingMargin" id="MOo-Hr-UoY"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Zb7-Lz-AYd" secondAttribute="bottom" id="UKn-gF-Ugn"/>
+                                                <constraint firstItem="Zb7-Lz-AYd" firstAttribute="top" secondItem="Hdw-lp-Vde" secondAttribute="topMargin" id="jmX-mu-M5F"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="bannerImage" destination="Zb7-Lz-AYd" id="pu2-Eh-l7n"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DescriptionTablViwCell" rowHeight="154" id="lqh-2j-ZTj" customClass="DescriptionTablViwCell" customModule="Proect_MovieCatalog" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="413.5" width="414" height="154"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lqh-2j-ZTj" id="XSy-La-xZf">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="154"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="web-G1-pxi">
+                                                    <rect key="frame" x="20" y="11" width="374" height="132"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                    <color key="textColor" systemColor="labelColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="web-G1-pxi" secondAttribute="bottom" id="Bt6-6F-2dc"/>
+                                                <constraint firstItem="web-G1-pxi" firstAttribute="top" secondItem="XSy-La-xZf" secondAttribute="topMargin" id="Kua-qK-d6e"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="web-G1-pxi" secondAttribute="trailing" id="soI-D3-hJq"/>
+                                                <constraint firstItem="web-G1-pxi" firstAttribute="leading" secondItem="XSy-La-xZf" secondAttribute="leadingMargin" id="xqn-GB-puu"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="descriptionTextView" destination="web-G1-pxi" id="ukI-kt-c6e"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TrailersTablViwCell" id="oAR-ui-aeh" customClass="TrailersTablViwCell" customModule="Proect_MovieCatalog" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="567.5" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oAR-ui-aeh" id="FO6-f2-Myi">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RatingTablViwCell" rowHeight="112" id="aSu-DI-KUO" customClass="RatingTablViwCell" customModule="Proect_MovieCatalog" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="611.5" width="414" height="112"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aSu-DI-KUO" id="dIq-g7-Eqx">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="112"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A54-F9-niQ">
+                                                    <rect key="frame" x="182.5" y="27" width="49" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="count of vote" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qOL-iO-iCU">
+                                                    <rect key="frame" x="157" y="64" width="100.5" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="A54-F9-niQ" firstAttribute="top" secondItem="dIq-g7-Eqx" secondAttribute="topMargin" constant="16" id="7XQ-6U-Chl"/>
+                                                <constraint firstItem="qOL-iO-iCU" firstAttribute="centerX" secondItem="dIq-g7-Eqx" secondAttribute="centerX" id="IN5-G5-84g"/>
+                                                <constraint firstItem="qOL-iO-iCU" firstAttribute="top" secondItem="A54-F9-niQ" secondAttribute="bottom" constant="16" id="IVl-p0-gMl"/>
+                                                <constraint firstItem="A54-F9-niQ" firstAttribute="centerX" secondItem="dIq-g7-Eqx" secondAttribute="centerX" id="YqW-4S-Pee"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="imdbCount" destination="qOL-iO-iCU" id="yMr-1q-CHv"/>
+                                            <outlet property="imdbRating" destination="A54-F9-niQ" id="nf9-dU-Hy6"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="cB4-Hv-sOg"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="OhC-EL-hUE" firstAttribute="top" secondItem="Til-gd-iUy" secondAttribute="topMargin" constant="-88" id="57f-8J-Ftz"/>
-                            <constraint firstItem="OhC-EL-hUE" firstAttribute="leading" secondItem="Til-gd-iUy" secondAttribute="leadingMargin" constant="-20" id="mUy-Ss-Bue"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="OhC-EL-hUE" secondAttribute="bottom" constant="-34" id="rCu-Xq-cal"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="OhC-EL-hUE" secondAttribute="trailing" constant="-20" id="t1s-jL-1Bt"/>
+                            <constraint firstItem="ben-BT-Ngb" firstAttribute="top" secondItem="cB4-Hv-sOg" secondAttribute="top" id="08t-SV-7QK"/>
+                            <constraint firstItem="ben-BT-Ngb" firstAttribute="leading" secondItem="cB4-Hv-sOg" secondAttribute="leading" id="Asq-j5-YNl"/>
+                            <constraint firstItem="cB4-Hv-sOg" firstAttribute="bottom" secondItem="ben-BT-Ngb" secondAttribute="bottom" id="mBI-x1-nNt"/>
+                            <constraint firstItem="cB4-Hv-sOg" firstAttribute="trailing" secondItem="ben-BT-Ngb" secondAttribute="trailing" id="mgX-XX-iSY"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Ur8-JF-Oz5"/>
                     <connections>
-                        <outlet property="backgroundImageView" destination="OhC-EL-hUE" id="1du-p4-pQu"/>
+                        <outlet property="tableView" destination="ben-BT-Ngb" id="BgZ-C3-1Tu"/>
                     </connections>
                 </viewController>
             </objects>
