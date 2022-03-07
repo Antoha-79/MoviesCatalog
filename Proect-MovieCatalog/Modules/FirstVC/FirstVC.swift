@@ -37,6 +37,35 @@ class FirstVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Sec
         moviesInSections.append(serialsFilms)
         moviesInSections.append(actionFilms)
         moviesInSections.append(filmsByGenre(genre: .comedy))
+        
+         //   Добавил  тут просто для проверки как парсит json
+/*
+    let host = "https://api.themoviedb.org/3/discover/movie?api_key=64bd7aebee16952871cba9199b823dd7&language=en-US&sort_by=popularity.asc&include_adult=false&include_video=false&with_watch_monetization_types=flatrate"
+        
+        guard let url = URL(string: host) else { return }
+        
+        
+        URLSession.shared.dataTask(with: url) { responseData, response, error in
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let data = responseData {
+                //let jsonStr = String(data: data, encoding: .utf8) //  это работает
+                //print("  ПРОБА п р о б а: \(jsonStr ?? "ОШИБКА")")
+                do {
+                    let movieResponse = try JSONDecoder().decode(MovieResponse.self, from: data)
+                    print("")
+                    movieResponse.results.forEach({ print("Название: \($0.original_title), Жанры   \($0.genre_ids)") })
+                } catch {
+                    print("")
+                    print("ВНИМАНИЕ !!  error")
+                 
+                }
+            
+            }
+        }.resume()
+        
+ */
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -128,8 +157,8 @@ class FirstVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Sec
         let nextVC = storyboard.instantiateViewController(withIdentifier: "TheMovieVC") as! TheMovieVC
         nextVC.movie = movie
         navigationController?.pushViewController(nextVC, animated: true)
-    }
-    
+        
+}
   
 
 }
