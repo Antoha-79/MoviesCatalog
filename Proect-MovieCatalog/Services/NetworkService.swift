@@ -10,29 +10,45 @@ import Foundation
 
 final class NetworkService {
     
-    private let imageBasePath = "https://image.tmdb.org/t/p/w500/"  // надо где-то добавить для полного пути
+    private let imageBaseHost = "https://image.tmdb.org/t/p/w500/"  // в json приходит не полный путь
     
-    private let host = "https://api.themoviedb.org/3/discover/movie?api_key=64bd7aebee16952871cba9199b823dd7&language=en-US&sort_by=popularity.asc&include_adult=false&include_video=false&with_watch_monetization_types=flatrate"
+    private let baseDiscoverHost = "https://api.themoviedb.org/3/discover/movie?"
+    private let apiKey = "api_key=64bd7aebee16952871cba9199b823dd7"
     
-    func getMovies(completion: @escaping ([MovieMDB]?, Error?) -> Void) {
-        guard let url = URL(string: host) else { return }
-        var request = URLRequest(url: url)
+    enum Routes: String {
+        case top = "&primary_release_date.gte=1985-01-01&sort_by=vote_average.desc&&vote_count.gte=20000"
+        case newFilms = "&primary_release_date.gte=2022-02-15&primary_release_date.lte=2022-03-01&sort_by=popularity.desc"
+        case spanishFilms = "&language=es-ES"
+        case actionFilms = "&with_genres=28"
+    }
+    
+    
+     func getMovies(_ routes: Routes, completion: @escaping ([MovieMDB], Error?) -> Void) {
+        guard let url = URL(string: baseDiscoverHost + apiKey + routes.rawValue) else {
+            completion([], nil)
+            return
+        }
+        var request = URLRequest(url: url, timeoutInterval: 30.0)
         request.httpMethod = "GET"
         
         URLSession.shared.dataTask(with: request) { responseData, response, error in
             if let error = error {
-                print(error.localizedDescription)
+                completion([], error)
             } else if let data = responseData {
                 
                 do {
                     let movieResponse = try JSONDecoder().decode(MovieResponse.self, from: data)
-                    print("")
-                    print("ПРОБА !!!")
-                    print(movieResponse.results.first?.original_title ?? "НЕТ НАЗВАНИЯ ??-!!-??-!!")
-                    completion(movieResponse.results, error)
+
+                    var moviesWithPoster = [MovieMDB]()
+                    movieResponse.results.forEach { movie in
+                        var newMovie = movie
+                        newMovie.poster_path = "\(self.imageBaseHost)\(movie.poster_path ?? "")"
+                        moviesWithPoster.append(newMovie)
+                    }
+                    completion(moviesWithPoster, error)
+                    print("ПРОВЕРКА moviesWithPoster: \(moviesWithPoster.count)")
                 } catch {
-                    completion(nil, error)
-                    print("ВНИМАНИЕ netservice  error")
+                    completion([], nil)
                 }
     
                 DispatchQueue.main.async {

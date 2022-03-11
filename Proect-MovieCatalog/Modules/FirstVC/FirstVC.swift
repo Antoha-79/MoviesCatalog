@@ -23,6 +23,7 @@ class FirstVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Sec
         
     }
     
+    private var viewModel: FirstViewModelProtocol = FirstViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,42 +31,26 @@ class FirstVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Sec
         tableView.delegate = self
         tableView.dataSource = self
         
+        bind()
+        viewModel.getMovies()
+        
         setupTitle()
         
-        moviesInSections.append(topFilms)
+/*      moviesInSections.append(topFilms)
         moviesInSections.append(newFilms)
-        moviesInSections.append(serialsFilms)
+        //moviesInSections.append(serialsFilms)
         moviesInSections.append(actionFilms)
         moviesInSections.append(filmsByGenre(genre: .comedy))
+        moviesInSections.append(spanishFilms)
+        */
         
-         //   Добавил  тут просто для проверки как парсит json
-/*
-    let host = "https://api.themoviedb.org/3/discover/movie?api_key=64bd7aebee16952871cba9199b823dd7&language=en-US&sort_by=popularity.asc&include_adult=false&include_video=false&with_watch_monetization_types=flatrate"
-        
-        guard let url = URL(string: host) else { return }
-        
-        
-        URLSession.shared.dataTask(with: url) { responseData, response, error in
-            if let error = error {
-                print(error.localizedDescription)
-            } else if let data = responseData {
-                //let jsonStr = String(data: data, encoding: .utf8) //  это работает
-                //print("  ПРОБА п р о б а: \(jsonStr ?? "ОШИБКА")")
-                do {
-                    let movieResponse = try JSONDecoder().decode(MovieResponse.self, from: data)
-                    print("")
-                    movieResponse.results.forEach({ print("Название: \($0.original_title), Жанры   \($0.genre_ids)") })
-                } catch {
-                    print("")
-                    print("ВНИМАНИЕ !!  error")
-                 
-                }
-            
-            }
-        }.resume()
-        
- */
-        
+        print("Точка FirstVC viewDidLoad: \(moviesInSectionsMDB)")  // TEST
+    }
+    
+    private func bind() {
+        viewModel.moviesDidLoad = { [weak self] in
+            self?.tableView.reloadData()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

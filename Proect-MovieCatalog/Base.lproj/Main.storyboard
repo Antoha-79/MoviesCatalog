@@ -268,7 +268,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="k7Z-cP-idX">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="E71-ww-qVc"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="gearshape" catalog="system" id="E71-ww-qVc">
+                            <color key="tintColor" systemColor="systemGrayColor"/>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="JkG-vQ-Wu2" id="jCA-gS-VPv"/>
@@ -378,7 +380,6 @@
         <!--The MovieVC-->
         <scene sceneID="0wg-mv-zO0">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rG9-c5-yjh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="TheMovieVC" id="r2W-QG-Ktm" customClass="TheMovieVC" customModule="Proect_MovieCatalog" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Til-gd-iUy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -494,191 +495,9 @@
                         <outlet property="tableView" destination="ben-BT-Ngb" id="BgZ-C3-1Tu"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rG9-c5-yjh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3769.5652173913045" y="468.75"/>
-        </scene>
-        <!--Добавить в каталог-->
-        <scene sceneID="SO0-6U-HDX">
-            <objects>
-                <viewController storyboardIdentifier="addNewMovieVC" id="ktz-gd-iR5" customClass="addNewMovieVC" customModule="Proect_MovieCatalog" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="7XD-mm-ol3">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Назавние(Eng)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W0j-NR-K1U">
-                                <rect key="frame" x="15" y="138" width="384" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Название(Rus)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xeS-Ew-yHZ">
-                                <rect key="frame" x="15" y="187" width="384" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="жанр" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vQ2-qc-t2E">
-                                <rect key="frame" x="15" y="241" width="182" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="жанр" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qlK-IC-fz7">
-                                <rect key="frame" x="217" y="241" width="182" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="жанр" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7jW-l4-a1K">
-                                <rect key="frame" x="15" y="290" width="182" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="жанр" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z9H-mz-b34">
-                                <rect key="frame" x="217" y="290" width="182" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Bc7-aO-ISZ">
-                                <rect key="frame" x="15" y="344" width="384" height="205"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="Bc7-aO-ISZ" secondAttribute="height" multiplier="15:8" id="tjc-NA-deu"/>
-                                </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pQ1-Od-TWb">
-                                <rect key="frame" x="15" y="569" width="169" height="31"/>
-                                <color key="backgroundColor" systemColor="systemGray5Color"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Добавить афишу" cornerStyle="medium"/>
-                                <connections>
-                                    <action selector="addImage:" destination="ktz-gd-iR5" eventType="touchUpInside" id="yIN-YV-IHp"/>
-                                </connections>
-                            </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MlQ-vt-ZhR">
-                                <rect key="frame" x="199" y="569" width="200" height="200"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="9bg-yX-sMd"/>
-                                    <constraint firstAttribute="width" secondItem="MlQ-vt-ZhR" secondAttribute="height" multiplier="1:1" id="kZL-5C-q4X"/>
-                                </constraints>
-                            </imageView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Gf1-4M-dDu">
-                                <rect key="frame" x="15" y="625" width="81" height="32"/>
-                                <segments>
-                                    <segment title="нет"/>
-                                    <segment title="да"/>
-                                </segments>
-                                <connections>
-                                    <action selector="isTop:" destination="ktz-gd-iR5" eventType="valueChanged" id="ClR-0f-xM0"/>
-                                </connections>
-                            </segmentedControl>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="fIt-W5-t6b">
-                                <rect key="frame" x="15" y="671" width="81" height="32"/>
-                                <segments>
-                                    <segment title="нет"/>
-                                    <segment title="да"/>
-                                </segments>
-                                <connections>
-                                    <action selector="isSerial:" destination="ktz-gd-iR5" eventType="valueChanged" id="UDv-Tv-KnJ"/>
-                                </connections>
-                            </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ТОП ?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a9b-Fs-TLn">
-                                <rect key="frame" x="111" y="630" width="48" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Сериал ?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rOp-qS-OCv">
-                                <rect key="frame" x="111" y="676" width="73" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Дата премьеры" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Px4-du-p7Q">
-                                <rect key="frame" x="15" y="727" width="133" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="sWF-OX-3FA"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="W0j-NR-K1U" firstAttribute="top" secondItem="sWF-OX-3FA" secondAttribute="top" constant="50" id="02N-6V-C6d"/>
-                            <constraint firstItem="sWF-OX-3FA" firstAttribute="trailing" secondItem="W0j-NR-K1U" secondAttribute="trailing" constant="15" id="2w8-73-HfL"/>
-                            <constraint firstItem="7jW-l4-a1K" firstAttribute="top" secondItem="vQ2-qc-t2E" secondAttribute="bottom" constant="15" id="7KJ-Oy-gkZ"/>
-                            <constraint firstItem="xeS-Ew-yHZ" firstAttribute="top" secondItem="W0j-NR-K1U" secondAttribute="bottom" constant="15" id="7ee-k7-0mx"/>
-                            <constraint firstItem="Z9H-mz-b34" firstAttribute="top" secondItem="7jW-l4-a1K" secondAttribute="top" id="9Hg-Bg-akM"/>
-                            <constraint firstItem="rOp-qS-OCv" firstAttribute="centerY" secondItem="fIt-W5-t6b" secondAttribute="centerY" id="9Wb-Tp-DuS"/>
-                            <constraint firstItem="7jW-l4-a1K" firstAttribute="leading" secondItem="sWF-OX-3FA" secondAttribute="leading" constant="15" id="Ahq-zz-uho"/>
-                            <constraint firstItem="MlQ-vt-ZhR" firstAttribute="top" secondItem="pQ1-Od-TWb" secondAttribute="top" id="Ame-48-50x"/>
-                            <constraint firstItem="qlK-IC-fz7" firstAttribute="width" secondItem="vQ2-qc-t2E" secondAttribute="width" id="Fno-Ia-lli"/>
-                            <constraint firstItem="a9b-Fs-TLn" firstAttribute="centerY" secondItem="Gf1-4M-dDu" secondAttribute="centerY" id="Je5-Ul-F1K"/>
-                            <constraint firstItem="Bc7-aO-ISZ" firstAttribute="leading" secondItem="sWF-OX-3FA" secondAttribute="leading" constant="15" id="Jko-VP-7MY"/>
-                            <constraint firstItem="MlQ-vt-ZhR" firstAttribute="top" secondItem="Bc7-aO-ISZ" secondAttribute="bottom" constant="20" id="Mch-c2-ezn"/>
-                            <constraint firstItem="Gf1-4M-dDu" firstAttribute="leading" secondItem="sWF-OX-3FA" secondAttribute="leading" constant="15" id="NS5-wv-e89"/>
-                            <constraint firstItem="fIt-W5-t6b" firstAttribute="top" secondItem="Gf1-4M-dDu" secondAttribute="bottom" constant="15" id="OQn-l7-KDr"/>
-                            <constraint firstItem="pQ1-Od-TWb" firstAttribute="leading" secondItem="sWF-OX-3FA" secondAttribute="leading" constant="15" id="PSJ-zg-5hi"/>
-                            <constraint firstItem="a9b-Fs-TLn" firstAttribute="leading" secondItem="Gf1-4M-dDu" secondAttribute="trailing" constant="15" id="StO-NK-CMD"/>
-                            <constraint firstItem="Z9H-mz-b34" firstAttribute="leading" secondItem="7jW-l4-a1K" secondAttribute="trailing" constant="20" id="URs-zJ-ceA"/>
-                            <constraint firstItem="rOp-qS-OCv" firstAttribute="leading" secondItem="fIt-W5-t6b" secondAttribute="trailing" constant="15" id="UU8-T5-995"/>
-                            <constraint firstItem="Px4-du-p7Q" firstAttribute="top" secondItem="fIt-W5-t6b" secondAttribute="bottom" constant="25" id="UsS-pv-Pwf"/>
-                            <constraint firstItem="vQ2-qc-t2E" firstAttribute="top" secondItem="xeS-Ew-yHZ" secondAttribute="bottom" constant="20" id="V84-ZD-hOG"/>
-                            <constraint firstItem="sWF-OX-3FA" firstAttribute="trailing" secondItem="xeS-Ew-yHZ" secondAttribute="trailing" constant="15" id="VMe-Yp-bVL"/>
-                            <constraint firstItem="qlK-IC-fz7" firstAttribute="top" secondItem="vQ2-qc-t2E" secondAttribute="top" id="XWJ-sb-ysf"/>
-                            <constraint firstItem="qlK-IC-fz7" firstAttribute="leading" secondItem="vQ2-qc-t2E" secondAttribute="trailing" constant="20" id="ZYK-Kh-CmD"/>
-                            <constraint firstItem="MlQ-vt-ZhR" firstAttribute="leading" secondItem="pQ1-Od-TWb" secondAttribute="trailing" constant="15" id="Ziy-ut-CCl"/>
-                            <constraint firstItem="Bc7-aO-ISZ" firstAttribute="top" secondItem="7jW-l4-a1K" secondAttribute="bottom" constant="20" id="b47-RH-nAV"/>
-                            <constraint firstItem="vQ2-qc-t2E" firstAttribute="leading" secondItem="sWF-OX-3FA" secondAttribute="leading" constant="15" id="d30-X1-HPv"/>
-                            <constraint firstItem="Px4-du-p7Q" firstAttribute="leading" secondItem="sWF-OX-3FA" secondAttribute="leading" constant="15" id="djR-V4-r3K"/>
-                            <constraint firstItem="sWF-OX-3FA" firstAttribute="trailing" secondItem="Bc7-aO-ISZ" secondAttribute="trailing" constant="15" id="dp7-7L-sp5"/>
-                            <constraint firstItem="Gf1-4M-dDu" firstAttribute="top" secondItem="pQ1-Od-TWb" secondAttribute="bottom" constant="25" id="fey-8q-R1U"/>
-                            <constraint firstItem="sWF-OX-3FA" firstAttribute="trailing" secondItem="qlK-IC-fz7" secondAttribute="trailing" constant="15" id="gne-u9-0BR"/>
-                            <constraint firstItem="Z9H-mz-b34" firstAttribute="bottom" secondItem="7jW-l4-a1K" secondAttribute="bottom" id="iWs-1D-8XQ"/>
-                            <constraint firstItem="fIt-W5-t6b" firstAttribute="leading" secondItem="sWF-OX-3FA" secondAttribute="leading" constant="15" id="kUq-EM-1ya"/>
-                            <constraint firstItem="W0j-NR-K1U" firstAttribute="leading" secondItem="sWF-OX-3FA" secondAttribute="leading" constant="15" id="kXu-6p-CHY"/>
-                            <constraint firstItem="xeS-Ew-yHZ" firstAttribute="leading" secondItem="sWF-OX-3FA" secondAttribute="leading" constant="15" id="nXg-M6-WaJ"/>
-                            <constraint firstItem="sWF-OX-3FA" firstAttribute="trailing" secondItem="MlQ-vt-ZhR" secondAttribute="trailing" constant="15" id="opU-eL-XSd"/>
-                            <constraint firstItem="qlK-IC-fz7" firstAttribute="bottom" secondItem="vQ2-qc-t2E" secondAttribute="bottom" id="orG-sE-FEx"/>
-                            <constraint firstItem="Z9H-mz-b34" firstAttribute="width" secondItem="7jW-l4-a1K" secondAttribute="width" id="pqw-T6-7ya"/>
-                            <constraint firstItem="sWF-OX-3FA" firstAttribute="trailing" secondItem="Z9H-mz-b34" secondAttribute="trailing" constant="15" id="rVk-xa-P44"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Добавить в каталог" id="Y4g-HH-eca">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Iwf-oH-Wjf"/>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="dateOfPremiereField" destination="Px4-du-p7Q" id="jlM-wS-w8m"/>
-                        <outlet property="descriptionField" destination="Bc7-aO-ISZ" id="OUU-we-v1D"/>
-                        <outlet property="genre2Field" destination="qlK-IC-fz7" id="hgT-7t-WYc"/>
-                        <outlet property="genre3Field" destination="7jW-l4-a1K" id="gkq-jg-ZEc"/>
-                        <outlet property="genre4Field" destination="Z9H-mz-b34" id="lmf-gy-95r"/>
-                        <outlet property="genreField" destination="vQ2-qc-t2E" id="L8H-PO-2qd"/>
-                        <outlet property="mainImage" destination="MlQ-vt-ZhR" id="MWv-Nm-be1"/>
-                        <outlet property="nameEngField" destination="W0j-NR-K1U" id="pW2-Zx-NbJ"/>
-                        <outlet property="nameRusField" destination="xeS-Ew-yHZ" id="RcU-an-hHI"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3wV-4y-eku" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="967" y="-769"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Zr7-o4-T1H">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gZB-Tl-gYw" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3UQ-uI-Fs0">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="ktz-gd-iR5" kind="relationship" relationship="rootViewController" id="nWn-5D-SAq"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="K6r-7f-qMe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="203" y="-769"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="5qY-Uc-Z1E">
@@ -740,6 +559,7 @@
     </scenes>
     <resources>
         <image name="arrow.left" catalog="system" width="128" height="98"/>
+        <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="top_poster" width="1280" height="623"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -747,8 +567,8 @@
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

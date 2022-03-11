@@ -16,7 +16,8 @@ enum SectionsOfMain: String, CaseIterable {
     case banner = "banner" // статичный баннер-картинка
     case top = "ТОП"
     case new = "Новинки"
-    case serials = "Сериалы"
+    //case serials = "Сериалы"
+    case spanish = "На испанском языке"
     case action = "Боевики"
     case genres = "Жанры"
     
@@ -33,7 +34,8 @@ enum SectionsOfMain: String, CaseIterable {
         case .banner: return  1
         case .top: return     topFilms.count
         case .new: return     newFilms.count
-        case .serials: return serialsFilms.count
+        //case .serials: return serialsFilms.count
+        case .spanish: return spanishFilms.count
         case .action: return  actionFilms.count
         case .genres: return  moviesInCatalog.count // все фильмы
         }
@@ -100,18 +102,19 @@ struct Movie {
         }
         return true
     }
-    var serials: Bool
+    //var serials: Bool
+    var spanish: Bool
     
 }
 
 var moviesInCatalog: [Movie] = [
-    Movie(nameEng: "Dune: Part One", nameRus: "Дюна", genre: [.fiction, .adventure, .drama, .action], description: "Атрейдесы прибывают на планету, где им никто не рад. Тимоти Шаламе в фантастическом эпосе Дени Вильнёва", image: UIImage(named: "film-Duna-1"), top: true, dateOfPremiere: Date(), serials: false),
-    Movie(nameEng: "Raya and the Last Dragon", nameRus: "Райя и последний дракон", genre: [.adventure, .drama, .animation, .fantasy, .comedy, .family], description: "Дочь вождя ищет магическое существо в надежде спасти мир. Новая работа режиссера «Города героев» для Disney", image: UIImage(named: "film_Raja-1"), top: true, dateOfPremiere: Date(), serials: false),
-    Movie(nameEng: "Free Guy", nameRus: "Главный герой", genre: [.comedy, .fiction, .action, .melodrama], description: "Банковский клерк обнаруживает, что он персонаж видеоигры. Фантастическая экшен-комедия с Райаном Рейнольдсом", image: UIImage(named: "film-FreeGue-1"), top: true, dateOfPremiere: Date(), serials: false),
-    Movie(nameEng: "The Rookie", nameRus: "Новичок", genre: [.fiction, .adventure, .drama, .action], description: "Начинать с чистого листа нелегко, особенно в полиции Лос-Анджелеса - новичка встречают не очень", image: UIImage(named: "film_Rookie-1"), top: false, dateOfPremiere: Date(), serials: true),
-    Movie(nameEng: "Dune: Part One", nameRus: "БББ", genre: [.fiction, .adventure, .drama, .action], description: "Атрейдесы прибывают на планету, где им никто не рад. Тимоти Шаламе в фантастическом эпосе Дени Вильнёва", image: UIImage(named: "action"), top: false, dateOfPremiere: Date(), serials: true),
-    Movie(nameEng: "Dune: Part One", nameRus: "УЖЖас", genre: [.fiction, .adventure, .drama, .action], description: "Атрейдесы прибывают на планету, где им никто не рад. Тимоти Шаламе в фантастическом эпосе Дени Вильнёва", image: UIImage(named: "horror"), top: false, dateOfPremiere: Date(), serials: false),
-    Movie(nameEng: "Dune: Part One", nameRus: "ХаХа", genre: [.fiction, .adventure, .drama, .action], description: "Атрейдесы прибывают на планету, где им никто не рад. Тимоти Шаламе в фантастическом эпосе Дени Вильнёва", image: UIImage(named: "comedy"), top: true, dateOfPremiere: Date(), serials: false)
+    Movie(nameEng: "Dune: Part One", nameRus: "Дюна", genre: [.fiction, .adventure, .drama, .action], description: "Атрейдесы прибывают на планету, где им никто не рад. Тимоти Шаламе в фантастическом эпосе Дени Вильнёва", image: UIImage(named: "film-Duna-1"), top: true, dateOfPremiere: Date(), spanish: false),
+    Movie(nameEng: "Raya and the Last Dragon", nameRus: "Райя и последний дракон", genre: [.adventure, .drama, .animation, .fantasy, .comedy, .family], description: "Дочь вождя ищет магическое существо в надежде спасти мир. Новая работа режиссера «Города героев» для Disney", image: UIImage(named: "film_Raja-1"), top: true, dateOfPremiere: Date(), spanish: false),
+    Movie(nameEng: "Free Guy", nameRus: "Главный герой", genre: [.comedy, .fiction, .action, .melodrama], description: "Банковский клерк обнаруживает, что он персонаж видеоигры. Фантастическая экшен-комедия с Райаном Рейнольдсом", image: UIImage(named: "film-FreeGue-1"), top: true, dateOfPremiere: Date(), spanish: false),
+    Movie(nameEng: "The Rookie", nameRus: "Новичок", genre: [.fiction, .adventure, .drama, .action], description: "Начинать с чистого листа нелегко, особенно в полиции Лос-Анджелеса - новичка встречают не очень", image: UIImage(named: "film_Rookie-1"), top: false, dateOfPremiere: Date(), spanish: true),
+    Movie(nameEng: "Dune: Part One", nameRus: "БББ", genre: [.fiction, .adventure, .drama, .action], description: "Атрейдесы прибывают на планету, где им никто не рад. Тимоти Шаламе в фантастическом эпосе Дени Вильнёва", image: UIImage(named: "action"), top: false, dateOfPremiere: Date(), spanish: true),
+    Movie(nameEng: "Dune: Part One", nameRus: "УЖЖас", genre: [.fiction, .adventure, .drama, .action], description: "Атрейдесы прибывают на планету, где им никто не рад. Тимоти Шаламе в фантастическом эпосе Дени Вильнёва", image: UIImage(named: "horror"), top: false, dateOfPremiere: Date(), spanish: false),
+    Movie(nameEng: "Dune: Part One", nameRus: "ХаХа", genre: [.fiction, .adventure, .drama, .action], description: "Атрейдесы прибывают на планету, где им никто не рад. Тимоти Шаламе в фантастическом эпосе Дени Вильнёва", image: UIImage(named: "comedy"), top: true, dateOfPremiere: Date(), spanish: false)
 ]
 
 
@@ -119,8 +122,10 @@ var moviesInSections = [[Movie]]()  //заполнился массив в First
     
 var topFilms = moviesInCatalog.filter{$0.top == true}
 var newFilms = moviesInCatalog.filter{$0.new == true}
-var serialsFilms = moviesInCatalog.filter{$0.serials == true}
+//var serialsFilms = moviesInCatalog.filter{$0.serials == true}
 var actionFilms = moviesInCatalog.filter{$0.genre.contains(.action)} //test - ".action"
+var spanishFilms = moviesInCatalog.filter{$0.spanish == true}
+
 
 func filmsByGenre(genre: Genres) -> [Movie] {
     return moviesInCatalog.filter{$0.genre.contains(genre)}
