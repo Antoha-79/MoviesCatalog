@@ -7,9 +7,14 @@
 
 import Foundation
 
+var topFilmsMDB: [MovieMDB] = []
+var newFilmsMDB: [MovieMDB] = []
+var spanishFilmsMDB: [MovieMDB] = []
+var actionFilmsMDB: [MovieMDB] = []
+
 protocol FirstViewModelProtocol: AnyObject {
     
-    var movies: [MovieMDB] { get }
+   // var movies: [MovieMDB] { get }
     
     func getMovies()
     
@@ -18,19 +23,17 @@ protocol FirstViewModelProtocol: AnyObject {
 
 final class FirstViewModel: FirstViewModelProtocol {
     
-    var movies: [MovieMDB] = []
+   // var movies: [MovieMDB] = []
     var moviesDidLoad: (() -> Void)?
     
     private lazy var networkService = NetworkService()
     
     func getMovies() {
-        networkService.getMovies(.top) { [weak self] movies, error in
-            if let error = error {
-                print("Error: \(#function) \(error.localizedDescription)")
-                return
-            }
+        
+        networkService.getMovies { [weak self] movies in
+        
             if !movies.isEmpty {
-                self?.movies = movies
+               // self?.movies = movies
                 
                 print("111111: \(movies.count)")
                 
@@ -44,8 +47,29 @@ final class FirstViewModel: FirstViewModelProtocol {
                 print("3333333")
             }
         }
+   /*
+        networkService.getMovies(.top) { [weak self] movies, error in
+            if let error = error {
+                print("Error: \(#function) \(error.localizedDescription)")
+                return
+            }
+            if !movies.isEmpty {
+               // self?.movies = movies
+                
+                print("111111: \(movies.count)")
+                
+                topFilmsMDB = movies
+                print("222222: \(topFilmsMDB[0].original_title)")
+                moviesInSectionsMDB.append(topFilmsMDB)
+                DispatchQueue.main.async {  // НУЖНО ЛИ ВЫХОДИТЬ В main ???
+                    self?.moviesDidLoad?()
+                }
+            } else{
+                print("3333333")
+            }
+        }  */
         
-        
+ /*
         networkService.getMovies(.newFilms) { [weak self] movies, error in
             if let error = error {
                 print("Error: \(#function) \(error.localizedDescription)")
@@ -90,6 +114,7 @@ final class FirstViewModel: FirstViewModelProtocol {
                 }
             }
         }
+  */
         print("Точка FirstViewModel.getMovies: \(moviesInSectionsMDB)")   // TEST
     }
     

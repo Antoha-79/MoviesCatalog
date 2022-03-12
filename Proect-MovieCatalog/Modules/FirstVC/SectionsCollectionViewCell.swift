@@ -29,7 +29,7 @@ class SectionsCollectionViewCell: UICollectionViewCell {
      }
      
      titleLabel.text = movie.original_title
-     descriptionLabel.text = GenreString().genreName[movie.genre_ids.first ?? 18] // времнно
+     descriptionLabel.text = GenreString().genreName[movie.genre_ids?.first ?? 18] // времнно
      
      // не уверен!!! Продумать когда какой description  !!!!!!!!
   

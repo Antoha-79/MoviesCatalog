@@ -12,7 +12,7 @@ struct Collection {  // пока нигде не использую
     var id: Int
     var name: String
     var overview: String?
-}
+}  
 
 enum GenresMDB: Int, CaseIterable {
     case action = 28
@@ -77,7 +77,7 @@ struct MovieMDB: Decodable {
     
     var adult: Bool?
     var backdrop_path: String?
-    var genre_ids: [Int]
+    var genre_ids: [Int]?
     var id: Int
     var original_language: String
     var original_title: String
@@ -129,19 +129,15 @@ struct MovieMDB: Decodable {
         }
 }
 
-//var moviesInCatalogMDB: [MovieMDB] = []
+
 
 
 var moviesInSectionsMDB = [[MovieMDB]]()  //заполнился массив в FirstVC  в viewDidLoad (нужно внутри функции заполнять массив)
-    
+
+/*
 var topFilmsMDB: [MovieMDB] = []
 var newFilmsMDB: [MovieMDB] = []
 var spanishFilmsMDB: [MovieMDB] = []
 var actionFilmsMDB: [MovieMDB] = []
+*/
 
-//func filmsByGenreMDB(genre: Genres) -> [Movie] {
-  //  return moviesInCatalog.filter{$0.genre.contains(genre)}
- //   }
-
-        
-//var actionFilmsMDB = moviesInCatalogMDB.filter{$0.genre_ids.contains(28)}

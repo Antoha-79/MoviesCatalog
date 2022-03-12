@@ -12,6 +12,7 @@ class FirstVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Sec
    
     @IBOutlet private weak var tableView: UITableView!
     
+    
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
 
         let hideLeftButton: Bool = velocity.y < 0 ? true : false
