@@ -11,7 +11,7 @@ class TheMovieVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet private weak var tableView: UITableView!
     
-    var movie: MovieMDB!
+    var movie: Movie!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,13 +37,13 @@ class TheMovieVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "BannerTablVwCell", for: indexPath) as? BannerTablVwCell
             //cell?.moviePoster = movie.image
-            cell?.bannerImage.image = UIImage(named: "TestImage") //movie.image // ВРЕМЕННО, пока нет сохраненных
+            cell?.bannerImage.image = movie.image //movie.imageUIImage(named: "TestImage") // ВРЕМЕННО, пока нет сохраненных
             
                 return cell ?? UITableViewCell()
             
         } else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DescriptionTablViwCell", for: indexPath) as? DescriptionTablViwCell
-            cell?.descriptionTextView.text = movie.overview
+            cell?.descriptionTextView.text = movie.description //movie.overview
             
                 return cell ?? UITableViewCell()
             

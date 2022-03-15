@@ -24,7 +24,7 @@ class FirstVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Sec
         
     }
     
-    private var viewModel: FirstViewModelProtocol = FirstViewModel()
+ //   private var viewModel: FirstViewModelProtocol = FirstViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,15 +45,15 @@ class FirstVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Sec
         
         setupTitle()
         
-/*      moviesInSections.append(topFilms)
+        moviesInSections.append(topFilms)
         moviesInSections.append(newFilms)
-        //moviesInSections.append(serialsFilms)
+        moviesInSections.append(serialsFilms)
         moviesInSections.append(actionFilms)
         moviesInSections.append(filmsByGenre(genre: .comedy))
-        moviesInSections.append(spanishFilms)
-        */
+        //moviesInSections.append(spanishFilms)
         
-        print("Точка FirstVC viewDidLoad: \(moviesInSectionsMDB)")  // TEST
+        
+        //print("Точка FirstVC viewDidLoad: \(moviesInSections.count)")  // TEST
     }
     
     func testLoad() {
@@ -62,19 +62,25 @@ class FirstVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Sec
         
     guard let url = URL(string: myUrl)  else { return }
     print(url)
-    URLSession.shared.dataTask(with: url) { (data, response, error) in
-        DispatchQueue.main.async {
-            if error != nil {
-                print("Какая-то ошибка")
-            } else {
-                print(response)
-            }
-            print("тест перехода к  guard")
-            guard let data = data else { return }
-            let someString = String(data: data, encoding: .utf8)
-            print(someString ?? "РАЗВЕ ПУСТО?")
-        }
-    }.resume()
+        URLSession.shared.dataTask(with: url) { responseData, response, error in
+                   if let error = error {
+                       print(error.localizedDescription)
+                   } else if let data = responseData {
+                      // let jsonStr = String(data: data, encoding: .utf8) //  это работает
+                     //  print("  ПРОБА п р о б а: \(jsonStr ?? "ОШИБКА")")
+                       do {
+                           let movieResponse = try JSONDecoder().decode(MovieResponse.self, from: data)
+                           print("")
+                           moviesInSectionsMDB.append(movieResponse.results)
+                           print("Точка FirstVC viewDidLoad-2: \(moviesInSectionsMDB.count)")
+                           print("")
+                           movieResponse.results.forEach({ print("Название: \($0.original_title), Жанры   \($0.genre_ids)") })
+                       } catch {
+                           print("")
+                           print("ВНИМАНИЕ !!  error")                        
+                       }
+                   }
+               }.resume()
     }
     
   /* это был тест 1
@@ -116,11 +122,11 @@ class FirstVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Sec
    */
     
     
-    private func bind() {
+ /*   private func bind() {
         viewModel.moviesDidLoad = { [weak self] in
             self?.tableView.reloadData()
         }
-    }
+    }*/
     
     override func viewWillAppear(_ animated: Bool) {
         navigationItem.leftBarButtonItem?.customView?.isHidden = true
@@ -206,7 +212,7 @@ class FirstVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Sec
        
     }
     
-    func openFilm(_ movie: MovieMDB) {
+    func openFilm(_ movie: Movie) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let nextVC = storyboard.instantiateViewController(withIdentifier: "TheMovieVC") as! TheMovieVC
         nextVC.movie = movie

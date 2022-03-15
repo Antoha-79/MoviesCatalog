@@ -132,7 +132,7 @@ struct MovieMDB: Decodable {
 
 
 
-var moviesInSectionsMDB = [[MovieMDB]]()  //заполнился массив в FirstVC  в viewDidLoad (нужно внутри функции заполнять массив)
+//var moviesInSectionsMDB = [[MovieMDB]]()  //заполнился массив в FirstVC  в viewDidLoad (нужно внутри функции заполнять массив)
 
 /*
 var topFilmsMDB: [MovieMDB] = []

@@ -16,9 +16,9 @@ class listOfMoviesVC: UIViewController, UICollectionViewDataSource, UICollection
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if currentSectionOfTable != SectionsOfMain.allStringCases.firstIndex(of: "Жанры") {
-            return moviesInSectionsMDB[currentSectionOfTable - 3].count
+            return moviesInSections[currentSectionOfTable - 3].count
         } else {
-            return GenresMDB.allStringCases.count  //ВНИМАНИЕ - переделать на список апо жанру
+            return Genres.allStringCases.count  //ВНИМАНИЕ - переделать на список апо жанру
            
         }
     }
@@ -30,10 +30,10 @@ class listOfMoviesVC: UIViewController, UICollectionViewDataSource, UICollection
           //  return cell ?? UICollectionViewCell()
     
              if currentSectionOfTable != SectionsOfMain.allStringCases.firstIndex(of: "Жанры") {
-                 cell?.setup(movie: moviesInSectionsMDB[currentSectionOfTable - 3][indexPath.row])
+                 cell?.setup(movie: moviesInSections[currentSectionOfTable - 3][indexPath.row])
              } else {
-                // cell?.setup2(genre: Genres.allCases[indexPath.row]) //- переделать
-                 cell?.setup(movie: moviesInSectionsMDB[currentSectionOfTable - 3][indexPath.row]) //временно
+                 cell?.setup2(genre: Genres.allCases[indexPath.row]) //- переделать
+                 //cell?.setup(movie: moviesInSectionsMDB[currentSectionOfTable - 3][indexPath.row]) //временно
              }
              return cell ?? UICollectionViewCell()
         
@@ -50,7 +50,7 @@ class listOfMoviesVC: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedMovie = moviesInSectionsMDB[currentSectionOfTable - 3][indexPath.row]
+        let selectedMovie = moviesInSections[currentSectionOfTable - 3][indexPath.row]
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let nextVC = storyboard.instantiateViewController(withIdentifier: "TheMovieVC") as! TheMovieVC
         nextVC.movie = selectedMovie

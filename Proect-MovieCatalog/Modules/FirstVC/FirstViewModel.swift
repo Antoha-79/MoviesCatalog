@@ -25,6 +25,7 @@ final class FirstViewModel: FirstViewModelProtocol {
     private var spanishFilmsMDB: [MovieMDB] = []
     private var actionFilmsMDB: [MovieMDB] = []
     
+    private var moviesInSectionsMDB = [[MovieMDB]]()
     
     
     var movies: [MovieMDB] = []

@@ -12,7 +12,7 @@ protocol SectionButtonDelegate {
 }
 
 protocol SelectedCollectionCellDelegate {
-    func openFilm(_ movie: MovieMDB)
+    func openFilm(_ movie: Movie)
 }
 
 class SectionsTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -46,9 +46,13 @@ class SectionsTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
         print("ПРОВЕРКА collect.view: \(moviesInSectionsMDB.count)")
         print("")
         if currentSectionOfTable != SectionsOfMain.allStringCases.firstIndex(of: "Жанры") {
-            return moviesInSectionsMDB[currentSectionOfTable - 3].count
+           
+            print("ТЕСТ currentSectionOfTable:  \(currentSectionOfTable)")
+            print("ТЕСТ moviesInSections:  \(moviesInSections.count)")
+           
+            return moviesInSections[currentSectionOfTable - 3].count
         } else {
-            return GenresMDB.allStringCases.count
+            return Genres.allStringCases.count
     }
 }
 
@@ -56,7 +60,7 @@ class SectionsTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SectionsCollectionViewCell", for: indexPath) as? SectionsCollectionViewCell
     
              if currentSectionOfTable != SectionsOfMain.allStringCases.firstIndex(of: "Жанры") {
-                 cell?.setup(movie: moviesInSectionsMDB[currentSectionOfTable - 3][indexPath.row])
+                 cell?.setup(movie: moviesInSections[currentSectionOfTable - 3][indexPath.row])
              } else {
                  cell?.setup2(genre: Genres.allCases[indexPath.row])
              }
@@ -75,8 +79,8 @@ class SectionsTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedMovie: MovieMDB!
-        selectedMovie = moviesInSectionsMDB[currentSectionOfTable - 3][indexPath.row]
+        let selectedMovie: Movie!
+        selectedMovie = moviesInSections[currentSectionOfTable - 3][indexPath.row]
         self.cellDelegate?.openFilm(selectedMovie)
        
     }
