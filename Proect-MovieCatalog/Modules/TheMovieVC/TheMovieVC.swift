@@ -11,7 +11,7 @@ class TheMovieVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet private weak var tableView: UITableView!
     
-    var movie: Movie!
+    var movie: MovieMDB!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,13 +37,13 @@ class TheMovieVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "BannerTablVwCell", for: indexPath) as? BannerTablVwCell
             //cell?.moviePoster = movie.image
-            cell?.bannerImage.image = movie.image
+            cell?.bannerImage.image = UIImage(named: "TestImage") //movie.image // ВРЕМЕННО, пока нет сохраненных
             
                 return cell ?? UITableViewCell()
             
         } else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DescriptionTablViwCell", for: indexPath) as? DescriptionTablViwCell
-            cell?.descriptionTextView.text = movie.description
+            cell?.descriptionTextView.text = movie.overview
             
                 return cell ?? UITableViewCell()
             
@@ -55,8 +55,8 @@ class TheMovieVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             
         } else { // так актуально пока секций только 4
         let cell = tableView.dequeueReusableCell(withIdentifier: "RatingTablViwCell", for: indexPath) as? RatingTablViwCell
-            cell?.movieRating = 8.7  // ВНИМАНИЕ!! тест - пока не подключим API
-            cell?.movieRatingCount = 121039 // ВНИМАНИЕ!! тест - пока не подключим API
+            cell?.setup(movie: movie)
+           
             
             return cell ?? UITableViewCell()
         }

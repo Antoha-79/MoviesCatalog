@@ -12,11 +12,11 @@ protocol SectionButtonDelegate {
 }
 
 protocol SelectedCollectionCellDelegate {
-    func openFilm(_ movie: Movie)
+    func openFilm(_ movie: MovieMDB)
 }
 
 class SectionsTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-
+    
    
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet weak var sectionLabel: UILabel!
@@ -75,8 +75,8 @@ class SectionsTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedMovie: Movie!
-        selectedMovie = moviesInSections[currentSectionOfTable - 3][indexPath.row]  
+        let selectedMovie: MovieMDB!
+        selectedMovie = moviesInSectionsMDB[currentSectionOfTable - 3][indexPath.row]
         self.cellDelegate?.openFilm(selectedMovie)
        
     }

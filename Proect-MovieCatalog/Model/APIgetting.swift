@@ -49,25 +49,25 @@ struct GenreString {
 
 
 struct MovieResponse: Decodable {
-    //var page: Int
+    var page: Int
     var results: [MovieMDB]
-    //var total_pages: Int
-    //var total_results: Int
+    var total_pages: Int
+    var total_results: Int
     
     enum CodingKeys: String, CodingKey {
-        //case page
+        case page
         case results
-       // case total_pages
-       // case total_results
+        case total_pages
+        case total_results
     }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         
-       // self.page = try container.decode(Int.self, forKey: .page)
+        self.page = try container.decode(Int.self, forKey: .page)
         self.results = try container.decode([MovieMDB].self, forKey: .results)
-        //self.total_pages = try container.decode(Int.self, forKey: .total_pages)
-        //self.total_results = try container.decode(Int.self, forKey: .total_results)
+        self.total_pages = try container.decode(Int.self, forKey: .total_pages)
+        self.total_results = try container.decode(Int.self, forKey: .total_results)
         }
         
     }
@@ -140,4 +140,6 @@ var newFilmsMDB: [MovieMDB] = []
 var spanishFilmsMDB: [MovieMDB] = []
 var actionFilmsMDB: [MovieMDB] = []
 */
+
+
 

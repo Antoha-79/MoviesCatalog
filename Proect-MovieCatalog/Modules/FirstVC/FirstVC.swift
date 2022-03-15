@@ -32,8 +32,16 @@ class FirstVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Sec
         tableView.delegate = self
         tableView.dataSource = self
         
-        bind()
-        viewModel.getMovies()
+       // bind()
+        //viewModel.getMovies()
+        
+        
+        
+      //  testMovies(urlString: myUrl) { load, error in
+       // }
+        
+        testLoad()
+        
         
         setupTitle()
         
@@ -47,6 +55,66 @@ class FirstVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Sec
         
         print("Точка FirstVC viewDidLoad: \(moviesInSectionsMDB)")  // TEST
     }
+    
+    func testLoad() {
+        
+    let myUrl = "https://api.themoviedb.org/3/discover/movie?api_key=64bd7aebee16952871cba9199b823dd7&page=3&primary_release_date.gte=2022-02-15&primary_release_date.lte=2022-03-01&sort_by=popularity.desc"
+        
+    guard let url = URL(string: myUrl)  else { return }
+    print(url)
+    URLSession.shared.dataTask(with: url) { (data, response, error) in
+        DispatchQueue.main.async {
+            if error != nil {
+                print("Какая-то ошибка")
+            } else {
+                print(response)
+            }
+            print("тест перехода к  guard")
+            guard let data = data else { return }
+            let someString = String(data: data, encoding: .utf8)
+            print(someString ?? "РАЗВЕ ПУСТО?")
+        }
+    }.resume()
+    }
+    
+  /* это был тест 1
+    func testMovies(urlString: String, completion: @escaping ([MovieMDB], Error?) -> Void) {
+        guard let url = URL(string: urlString)  else {
+           //completion([], nil)
+            print("ОШИБКА КАКАЯ-ТО")
+           return
+       }
+     //  var request = URLRequest(url: url, timeoutInterval: 30.0)
+     //  request.httpMethod = "GET"
+        print(url)
+       
+      // URLSession.shared.dataTask(with: request) { responseData, response, error in
+        URLSession.shared.dataTask(with: url) { responseData, response, error in
+            DispatchQueue.main.async {
+        if let error = error {
+               print("Error 4444444")
+               completion([], error)
+            return
+        }
+            guard let data = responseData else { return}
+            do {
+                
+                let someString = String(data: data, encoding: .utf8)
+                print(someString ?? "НЕТ данных")
+                
+                   let movieResponse = try JSONDecoder().decode(MovieResponse.self, from: data)
+                print(movieResponse.results.count)
+                completion(movieResponse.results, nil)
+            } catch let jsonError {
+              print("Ошибка декодирования JSON", jsonError)
+                   completion([], jsonError)
+               }
+               }
+       }.resume()
+   }
+    
+   */
+    
     
     private func bind() {
         viewModel.moviesDidLoad = { [weak self] in
@@ -138,7 +206,7 @@ class FirstVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Sec
        
     }
     
-    func openFilm(_ movie: Movie) {
+    func openFilm(_ movie: MovieMDB) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let nextVC = storyboard.instantiateViewController(withIdentifier: "TheMovieVC") as! TheMovieVC
         nextVC.movie = movie
