@@ -15,14 +15,14 @@ final class NetworkService {
     private let baseDiscoverHost = "https://api.themoviedb.org/3/discover/movie?"
     private let apiKey = "api_key=64bd7aebee16952871cba9199b823dd7"
     
-    private enum Routes: String {
+     enum Routes: String {
         case top = "&primary_release_date.gte=1985-01-01&sort_by=vote_average.desc&&vote_count.gte=20000"
         case newFilms = "&primary_release_date.gte=2022-02-15&primary_release_date.lte=2022-03-01&sort_by=popularity.desc"
         case spanishFilms = "&language=es-ES"
         case actionFilms = "&with_genres=28"
     }
     
-  /*
+  
      func getMovies(_ routes: Routes, completion: @escaping ([MovieMDB], Error?) -> Void) {
         guard let url = URL(string: baseDiscoverHost + apiKey + routes.rawValue) else {
             completion([], nil)
@@ -30,14 +30,11 @@ final class NetworkService {
         }
         var request = URLRequest(url: url, timeoutInterval: 30.0)
         request.httpMethod = "GET"
-         print(url)
         
         URLSession.shared.dataTask(with: request) { responseData, response, error in
             if let error = error {
-                print(4444444)
                 completion([], error)
             } else if let data = responseData {
-                print(5555555)
                 
                     let movieResponse = try? JSONDecoder().decode(MovieResponse.self, from: data)
 
@@ -47,21 +44,21 @@ final class NetworkService {
                         newMovie.poster_path = "\(self.imageBaseHost)\(movie.poster_path ?? "")"
                         moviesWithPoster.append(newMovie)
                     }
+                
+               // print("ПРОВЕРКА moviesWithPoster: \(moviesWithPoster.count)")
+                
                     completion(moviesWithPoster, error)
-                    print("ПРОВЕРКА moviesWithPoster: \(moviesWithPoster.count)")
                 } else {
                     completion([], nil)
                 }
-    
-                DispatchQueue.main.async {
-            
+                DispatchQueue.main.async {  //  может это нужно в начале прописать?
                 }
         }.resume()
     }
 
- */
+/*
     // ПРОВЕРКА
-    func getMovies(completion: @escaping ([MovieMDB], Error?) -> Void) {
+    func getMoviesTest(completion: @escaping ([MovieMDB], Error?) -> Void) {
         guard let url = URL(string: "https://api.themoviedb.org/3/discover/movie?api_key=64bd7aebee16952871cba9199b823dd7&primary_release_date.gte=1985-01-01&sort_by=vote_average.desc&&vote_count.gte=20000") else {
            completion([], nil)
            return
@@ -99,7 +96,7 @@ final class NetworkService {
                }
        }.resume()
    }
-    
+           */
 }
 
 

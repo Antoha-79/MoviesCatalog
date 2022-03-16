@@ -11,7 +11,7 @@ import Foundation
 protocol FirstViewModelProtocol: AnyObject {
     
     
-    var movies: [[MovieMDB]] { get set }
+    var moviesInSectionsMDB: [[MovieMDB]] { get set }
     
     func getMovies()
     
@@ -20,102 +20,73 @@ protocol FirstViewModelProtocol: AnyObject {
 
 final class FirstViewModel: FirstViewModelProtocol {
     
-    private var topFilmsMDB: [MovieMDB] = []
-    private var newFilmsMDB: [MovieMDB] = []
-    private var spanishFilmsMDB: [MovieMDB] = []
-    private var actionFilmsMDB: [MovieMDB] = []
-    
-    private var moviesInSectionsMDB: [[MovieMDB]] = []
+    // private var topFilmsMDB: [MovieMDB] = []
+    // private var newFilmsMDB: [MovieMDB] = []
+    // private var spanishFilmsMDB: [MovieMDB] = []
+    // private var actionFilmsMDB: [MovieMDB] = []
     
     
-    var movies: [[MovieMDB]] = []  // тестовый пока
+    var moviesInSectionsMDB: [[MovieMDB]] = []  // тестовый пока
     var moviesDidLoad: (() -> Void)?
     
     private lazy var networkService = NetworkService()
     
     func getMovies() {
         
-        networkService.getMovies { [weak self] moviesN, error in
+   /*     networkService.getMoviesTest { [weak self] movies, error in
             if let error = error {
                 print("Error: \(#function) \(error.localizedDescription)")
                 return
             }
-            if !moviesN.isEmpty {
-                self?.movies.append(moviesN) //= moviesN
+            if !movies.isEmpty {
+                self?.moviesInSectionsMDB.append(movies) //= moviesN
                 
-                print("111111: \(self?.movies.count)")
-                print("222222 poster: \(self?.movies.first?.first?.poster_path)")
-                
-                //self?.topFilmsMDB = self?.movies ?? []
-                //print("222222: \(self?.topFilmsMDB[0].original_title)")
-                
-                self?.moviesInSectionsMDB = self?.movies ?? []
-          
+                print("111111: \(self?.moviesInSectionsMDB.count)")
+                print("222222 poster: \(self?.moviesInSectionsMDB.first?.first?.poster_path)")
+            
                 DispatchQueue.main.async {
                     self?.moviesDidLoad?()
                 }
             }
         }
+  */
         
-       
-        
-        
-        
-        
-        
-        
-   /*
+   
         networkService.getMovies(.top) { [weak self] movies, error in
             if let error = error {
                 print("Error: \(#function) \(error.localizedDescription)")
                 return
             }
             if !movies.isEmpty {
-               // self?.movies = movies
+                self?.moviesInSectionsMDB.append(movies)
                 
-                print("111111: \(movies.count)")
-                
-                topFilmsMDB = movies
-                print("222222: \(topFilmsMDB[0].original_title)")
-                moviesInSectionsMDB.append(topFilmsMDB)
-                DispatchQueue.main.async {  // НУЖНО ЛИ ВЫХОДИТЬ В main ???
-                    self?.moviesDidLoad?()
-                }
-            } else{
-                print("3333333")
-            }
-        }  */
+                print("TOP movies: \(movies.count)")
+        }  
+    }
         
- /*
         networkService.getMovies(.newFilms) { [weak self] movies, error in
             if let error = error {
                 print("Error: \(#function) \(error.localizedDescription)")
                 return
             }
             if !movies.isEmpty {
-              //  self?.movies = movies
-                newFilmsMDB = movies
-                moviesInSectionsMDB.append(newFilmsMDB)
-                DispatchQueue.main.async {       // НУЖНО ЛИ ВЫХОДИТЬ В main ???
-                    self?.moviesDidLoad?()
-                }
-            }
+                self?.moviesInSectionsMDB.append(movies)
+                
+                print("NEW movies: \(movies.count)")
         }
-        
+    }
+   
         networkService.getMovies(.spanishFilms) { [weak self] movies, error in
             if let error = error {
                 print("Error: \(#function) \(error.localizedDescription)")
                 return
             }
             if !movies.isEmpty {
-              //  self?.movies = movies
-                spanishFilmsMDB = movies
-                moviesInSectionsMDB.append(spanishFilmsMDB)
-                DispatchQueue.main.async {    // НУЖНО ЛИ ВЫХОДИТЬ В main ???
-                    self?.moviesDidLoad?()
-                }
-            }
+                self?.moviesInSectionsMDB.append(movies)
+                
+                print("SPANISH movies: \(movies.count)")
         }
+    }
         
         networkService.getMovies(.actionFilms) { [weak self] movies, error in
             if let error = error {
@@ -123,19 +94,13 @@ final class FirstViewModel: FirstViewModelProtocol {
                 return
             }
             if !movies.isEmpty {
-              //  self?.movies = movies
-                actionFilmsMDB = movies
-                moviesInSectionsMDB.append(actionFilmsMDB)
-                DispatchQueue.main.async {
-                    self?.moviesDidLoad?()
-                }
-            }
+                self?.moviesInSectionsMDB.append(movies)
+                
+                print("ACTION movies: \(movies.count)")
         }
-  */
-        print("Точка FirstViewModel.getMovies: \(self.movies.count)")
-        print("Точка topFilmsMDB.getMovies: \(topFilmsMDB.count)")
-        print("Точка FirstViewModel.getMovies: \(moviesInSectionsMDB)")   // TEST
     }
 
+      
+    }
     
 }
