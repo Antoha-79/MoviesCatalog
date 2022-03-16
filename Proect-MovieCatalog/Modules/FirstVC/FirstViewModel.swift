@@ -11,7 +11,7 @@ import Foundation
 protocol FirstViewModelProtocol: AnyObject {
     
     
-    var movies: [MovieMDB] { get set }
+    var movies: [[MovieMDB]] { get set }
     
     func getMovies()
     
@@ -25,69 +25,39 @@ final class FirstViewModel: FirstViewModelProtocol {
     private var spanishFilmsMDB: [MovieMDB] = []
     private var actionFilmsMDB: [MovieMDB] = []
     
-    private var moviesInSectionsMDB = [[MovieMDB]]()
+    private var moviesInSectionsMDB: [[MovieMDB]] = []
     
     
-    var movies: [MovieMDB] = []
+    var movies: [[MovieMDB]] = []  // тестовый пока
     var moviesDidLoad: (() -> Void)?
     
     private lazy var networkService = NetworkService()
     
     func getMovies() {
         
- /*       networkService.getMovies { [weak self] movies in
-        
-            if !movies.isEmpty {
-               // self?.movies = movies
+        networkService.getMovies { [weak self] moviesN, error in
+            if let error = error {
+                print("Error: \(#function) \(error.localizedDescription)")
+                return
+            }
+            if !moviesN.isEmpty {
+                self?.movies.append(moviesN) //= moviesN
                 
-                print("111111: \(movies.count)")
+                print("111111: \(self?.movies.count)")
+                print("222222 poster: \(self?.movies.first?.first?.poster_path)")
                 
-                self?.topFilmsMDB = movies
-                print("222222: \(self?.topFilmsMDB[0].original_title)")
-                moviesInSectionsMDB.append(self?.topFilmsMDB ?? [])
-                DispatchQueue.main.async {  // НУЖНО ЛИ ВЫХОДИТЬ В main ???
+                //self?.topFilmsMDB = self?.movies ?? []
+                //print("222222: \(self?.topFilmsMDB[0].original_title)")
+                
+                self?.moviesInSectionsMDB = self?.movies ?? []
+          
+                DispatchQueue.main.async {
                     self?.moviesDidLoad?()
                 }
-            } else {
-                print("3333333")
-            }
-        }     */
-        
-       
-        
-        let imageBaseHost = "https://image.tmdb.org/t/p/w500/"
-        guard let url = URL(string: "https://api.themoviedb.org/3/discover/movie?api_key=64bd7aebee16952871cba9199b823dd7&primary_release_date.gte=1985-01-01&sort_by=vote_average.desc&&vote_count.gte=20000") else {return}
-        print("Тест URL 1: 01010101010101")
-        
-       var request = URLRequest(url: url, timeoutInterval: 30.0)
-       request.httpMethod = "GET"
-        print("Тест URL 2: \(url)")
-       
-       URLSession.shared.dataTask(with: request) { responseData, response, error in
-           if let data = responseData {
-               print("5555555")
-               
-               let movieResponse = try? JSONDecoder().decode(MovieResponse.self, from: data)
-              
-               self.movies = movieResponse?.results ?? []
-               //moviesInSectionsMDB.append(movieResponse?.results ?? [])
-               print("ПРОВЕРКА moviesWithPoster: \(movieResponse?.results.count)")
-           } else {
-               print(0001110001)
-               
-           }
-               //DispatchQueue.main.async {
-               //}
-       }.resume()
-        
-        if !self.movies.isEmpty {
-            self.topFilmsMDB = self.movies
-            DispatchQueue.main.async {
-                self.moviesDidLoad?()
-            
             }
         }
-
+        
+       
         
         
         
@@ -163,8 +133,9 @@ final class FirstViewModel: FirstViewModelProtocol {
         }
   */
         print("Точка FirstViewModel.getMovies: \(self.movies.count)")
-        print("Точка FirstViewModel.getMovies: \(topFilmsMDB.count)")
-        //print("Точка FirstViewModel.getMovies: \(moviesInSectionsMDB)")   // TEST
+        print("Точка topFilmsMDB.getMovies: \(topFilmsMDB.count)")
+        print("Точка FirstViewModel.getMovies: \(moviesInSectionsMDB)")   // TEST
     }
+
     
 }

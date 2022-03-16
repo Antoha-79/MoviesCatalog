@@ -61,18 +61,25 @@ final class NetworkService {
 
  */
     // ПРОВЕРКА
-    func getMovies(completion: @escaping ([MovieMDB]) -> Void) {
+    func getMovies(completion: @escaping ([MovieMDB], Error?) -> Void) {
         guard let url = URL(string: "https://api.themoviedb.org/3/discover/movie?api_key=64bd7aebee16952871cba9199b823dd7&primary_release_date.gte=1985-01-01&sort_by=vote_average.desc&&vote_count.gte=20000") else {
-           completion([])
+           completion([], nil)
            return
        }
+        
         print("Тест URL 1: 01010101010101")
+        
        var request = URLRequest(url: url, timeoutInterval: 30.0)
        request.httpMethod = "GET"
+        
         print("Тест URL 2: \(url)")
        
        URLSession.shared.dataTask(with: request) { responseData, response, error in
-           if let data = responseData {
+           if let error = error {
+               completion([], error)
+               
+           } else if let data = responseData {
+               
                print(5555555)
                
                    let movieResponse = try? JSONDecoder().decode(MovieResponse.self, from: data)
@@ -83,15 +90,12 @@ final class NetworkService {
                        newMovie.poster_path = "\(self.imageBaseHost)\(movie.poster_path ?? "")"
                        moviesWithPoster.append(newMovie)
                    }
-                   completion(moviesWithPoster)
-                   print("ПРОВЕРКА moviesWithPoster: \(moviesWithPoster.count)")
-               }
+               print("ПРОВЕРКА moviesWithPoster: \(moviesWithPoster.count)")
+                   completion(moviesWithPoster, nil)
+                
+           } else {
                    print(0001110001)
-                   completion([])
-               
-   
-               DispatchQueue.main.async {
-           
+                   completion([], nil)
                }
        }.resume()
    }

@@ -43,7 +43,7 @@ class SectionsTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("ПРОВЕРКА collect.view: \(moviesInSectionsMDB.count)")
+       // print("ПРОВЕРКА collect.view: \(moviesInSectionsMDB.count)")
         print("")
         if currentSectionOfTable != SectionsOfMain.allStringCases.firstIndex(of: "Жанры") {
            

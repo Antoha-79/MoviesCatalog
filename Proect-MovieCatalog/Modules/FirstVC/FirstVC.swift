@@ -24,7 +24,7 @@ class FirstVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Sec
         
     }
     
- //   private var viewModel: FirstViewModelProtocol = FirstViewModel()
+    private var viewModel: FirstViewModelProtocol = FirstViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,14 +33,15 @@ class FirstVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Sec
         tableView.dataSource = self
         
        // bind()
-        //viewModel.getMovies()
+        viewModel.getMovies()
+        
         
         
         
       //  testMovies(urlString: myUrl) { load, error in
        // }
         
-        testLoad()
+       // testLoad()
         
         
         setupTitle()
@@ -70,9 +71,9 @@ class FirstVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Sec
                      //  print("  ПРОБА п р о б а: \(jsonStr ?? "ОШИБКА")")
                        do {
                            let movieResponse = try JSONDecoder().decode(MovieResponse.self, from: data)
-                           print("")
-                           moviesInSectionsMDB.append(movieResponse.results)
-                           print("Точка FirstVC viewDidLoad-2: \(moviesInSectionsMDB.count)")
+                           //print("")
+                           //moviesInSectionsMDB.append(movieResponse.results)
+                           //print("Точка FirstVC viewDidLoad-2: \(moviesInSectionsMDB.count)")
                            print("")
                            movieResponse.results.forEach({ print("Название: \($0.original_title), Жанры   \($0.genre_ids)") })
                        } catch {
