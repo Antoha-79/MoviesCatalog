@@ -12,13 +12,14 @@ class listOfMoviesVC: UIViewController, UICollectionViewDataSource, UICollection
     @IBOutlet private weak var collectionView: UICollectionView!
     
     var currentSectionOfTable: Int!
+    var moviesInSections: [[MovieMDB]] = []
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if currentSectionOfTable != SectionsOfMain.allStringCases.firstIndex(of: "Жанры") {
             return moviesInSections[currentSectionOfTable - 3].count
         } else {
-            return Genres.allStringCases.count  //ВНИМАНИЕ - переделать на список апо жанру
+            return GenresMDB.allStringCases.count  //ВНИМАНИЕ - переделать на список апо жанру
            
         }
     }
@@ -32,7 +33,7 @@ class listOfMoviesVC: UIViewController, UICollectionViewDataSource, UICollection
              if currentSectionOfTable != SectionsOfMain.allStringCases.firstIndex(of: "Жанры") {
                  cell?.setup(movie: moviesInSections[currentSectionOfTable - 3][indexPath.row])
              } else {
-                 cell?.setup2(genre: Genres.allCases[indexPath.row]) //- переделать
+                 cell?.setup2(genre: GenresMDB.allCases[indexPath.row]) //- переделать
                  //cell?.setup(movie: moviesInSectionsMDB[currentSectionOfTable - 3][indexPath.row]) //временно
              }
              return cell ?? UICollectionViewCell()

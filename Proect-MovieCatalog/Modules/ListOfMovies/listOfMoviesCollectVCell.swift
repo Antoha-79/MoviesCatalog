@@ -14,15 +14,15 @@ class listOfMoviesCollectVCell: UICollectionViewCell {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
 
-func setup(movie: Movie) {
-    imageView.image = movie.image // UIImage(named: "TestImage") // ВРЕМЕННО, пока нет сохраненных
-    titleLabel.text = movie.nameRus // movie.title
-    descriptionLabel.text = movie.genre[0].rawValue // "ПОКА ТЕСТ"//  ВРЕМЕННО
+func setup(movie: MovieMDB) {
+    imageView.image = UIImage(named: "TestImage") // movie.image // ВРЕМЕННО, пока нет сохраненных
+    titleLabel.text = movie.title
+    descriptionLabel.text = "ПОКА ТЕСТ" // movie.genre[0].rawValue//  ВРЕМЕННО
     
     // не уверен!!! Продумать когда какой description  !!!!!!!!
 }
-    func setup2(genre: Genres) {
-        imageView.image = genre.picture // UIImage(named: "TestImage") // ВРЕМЕННО
+    func setup2(genre: GenresMDB) {
+        imageView.image = genre.picture 
         titleLabel.text = ""
         descriptionLabel.text = ""
         

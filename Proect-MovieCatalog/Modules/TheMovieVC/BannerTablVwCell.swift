@@ -9,17 +9,20 @@ import UIKit
 
 class BannerTablVwCell: UITableViewCell {
     
-    @IBOutlet weak var bannerImage: UIImageView!
+    @IBOutlet weak var bannerImage: DownloadPoster!
 
-    //var moviePoster: UIImage!
     
     override func awakeFromNib() {
         super.awakeFromNib()
        
-       // bannerImage.image = moviePoster
-        bannerImage.image
     }
 
+    func setup(movie: MovieMDB) {
+        bannerImage.load(imageURLStr: movie.poster_path) { image in
+            self.imageView?.image = image
+        }
+}
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

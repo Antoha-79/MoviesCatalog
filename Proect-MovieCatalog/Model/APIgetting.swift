@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 
 struct Collection {  // пока нигде не использую
@@ -40,6 +41,30 @@ enum GenresMDB: Int, CaseIterable {
             return genre.rawValue
         }
 }
+    var picture: UIImage? {
+        switch self {
+        case .action:   return UIImage(named: "action")
+        case .adventure: return UIImage(named: "adventure")
+        case .animation: return UIImage(named: "animation")
+        case .comedy:   return UIImage(named: "comedy")
+        case .crime:   return UIImage(named: "comedy") // нет
+        case .documentary:   return UIImage(named: "comedy") // нет
+        case .drama:    return UIImage(named: "drama")
+        case .family:   return UIImage(named: "comedy") // нет
+        case .fantasy:  return UIImage(named: "comedy") // нет
+        case .history:   return UIImage(named: "horror") // нет
+        case .horror:   return UIImage(named: "horror")
+        case .music:  return UIImage(named: "musical")
+        case .mystery:  return UIImage(named: "musical") // нет
+        case .romance:  return UIImage(named: "fiction") // нет
+        case .ScienceFiction:  return UIImage(named: "fiction")
+        case .TVMovie: return UIImage(named: "comedy") // нет
+        case .thriller: return UIImage(named: "comedy") // нет
+        case .war: return UIImage(named: "animation") // нет
+        case .western: return UIImage(named: "animation") // нет
+        }
+    }
+    
 }
 
 struct GenreString {

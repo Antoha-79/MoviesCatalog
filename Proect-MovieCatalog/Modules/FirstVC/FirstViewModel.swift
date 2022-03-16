@@ -26,7 +26,7 @@ final class FirstViewModel: FirstViewModelProtocol {
     // private var actionFilmsMDB: [MovieMDB] = []
     
     
-    var moviesInSectionsMDB: [[MovieMDB]] = []  // тестовый пока
+    var moviesInSectionsMDB: [[MovieMDB]] = [] 
     var moviesDidLoad: (() -> Void)?
     
     private lazy var networkService = NetworkService()

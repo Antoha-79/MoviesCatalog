@@ -22,7 +22,7 @@ class SectionsCollectionViewCell: UICollectionViewCell {
         imageView.image = nil
     }
    
- /*
+ 
  func setup(movie: MovieMDB) {
      imageView.load(imageURLStr: movie.poster_path) { image in
          self.imageView.image = image
@@ -36,19 +36,19 @@ class SectionsCollectionViewCell: UICollectionViewCell {
  }
  
   
-    func setup2(genre: Genres) {   // ВНИМАНИЕ !!!! ЗАМЕНИТЬ НА MDB
+    func setup2(genre: GenresMDB) {   // ВНИМАНИЕ !!!! ЗАМЕНИТЬ НА MDB
         imageView.image = genre.picture
         titleLabel.text = ""
         descriptionLabel.text = ""
         
         // не уверен!!! Продумать когда какой description  !!!!!!!!
     }
-    */
     
     
     
     
     
+ /*
     func setup(movie: Movie) {
         imageView.image = movie.image
         titleLabel.text = movie.nameRus
@@ -64,7 +64,7 @@ class SectionsCollectionViewCell: UICollectionViewCell {
            // не уверен!!! Продумать когда какой description  !!!!!!!!
        }
     
-    
+ */
     
     
     

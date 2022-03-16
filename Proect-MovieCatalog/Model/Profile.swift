@@ -118,7 +118,7 @@ var moviesInCatalog: [Movie] = [
 ]
 
 
-var moviesInSections = [[Movie]]()  //заполнился массив в FirstVC  в viewDidLoad (нужно внутри функции заполнять массив)
+//var moviesInSections = [[Movie]]()  //заполнился массив в FirstVC  в viewDidLoad (нужно внутри функции заполнять массив)
     
 var topFilms = moviesInCatalog.filter{$0.top == true}
 var newFilms = moviesInCatalog.filter{$0.new == true}

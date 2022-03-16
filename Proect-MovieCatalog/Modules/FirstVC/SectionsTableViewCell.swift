@@ -12,7 +12,7 @@ protocol SectionButtonDelegate {
 }
 
 protocol SelectedCollectionCellDelegate {
-    func openFilm(_ movie: Movie)
+    func openFilm(_ movie: MovieMDB)
 }
 
 class SectionsTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -25,6 +25,7 @@ class SectionsTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
     
     var currentSectionOfTable: Int!
     var indexPath: IndexPath!
+    var moviesInSections: [[MovieMDB]]!
     
     var delegate: SectionButtonDelegate?
     var cellDelegate: SelectedCollectionCellDelegate?
@@ -52,7 +53,7 @@ class SectionsTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
            
             return moviesInSections[currentSectionOfTable - 3].count
         } else {
-            return Genres.allStringCases.count
+            return GenresMDB.allStringCases.count
     }
 }
 
@@ -62,7 +63,7 @@ class SectionsTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
              if currentSectionOfTable != SectionsOfMain.allStringCases.firstIndex(of: "Жанры") {
                  cell?.setup(movie: moviesInSections[currentSectionOfTable - 3][indexPath.row])
              } else {
-                 cell?.setup2(genre: Genres.allCases[indexPath.row])
+                 cell?.setup2(genre: GenresMDB.allCases[indexPath.row])
              }
              return cell ?? UICollectionViewCell()
         
@@ -79,7 +80,7 @@ class SectionsTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedMovie: Movie!
+        let selectedMovie: MovieMDB!
         selectedMovie = moviesInSections[currentSectionOfTable - 3][indexPath.row]
         self.cellDelegate?.openFilm(selectedMovie)
        
