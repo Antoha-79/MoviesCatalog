@@ -71,7 +71,11 @@ class FirstVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Sec
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        SectionsOfMain.allCases.count
+        //пока ничего не скачалось показываем пустую таблицу
+        if viewModel.moviesInSectionsMDB.isEmpty {
+            return 0
+        }
+        return SectionsOfMain.allCases.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
