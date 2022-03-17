@@ -15,6 +15,10 @@ protocol SelectedCollectionCellDelegate {
     func openFilm(_ movie: MovieMDB)
 }
 
+protocol SelectedGenreDelegate {
+    func openFilmsByGenre(at genreNum: GenresMDB.RawValue)
+}
+
 class SectionsTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
    
@@ -29,6 +33,9 @@ class SectionsTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
     
     var delegate: SectionButtonDelegate?
     var cellDelegate: SelectedCollectionCellDelegate?
+    var genreDelegate: SelectedGenreDelegate?
+    
+
     
     
     @IBAction func sectionButton(_ sender: UIButton) {
@@ -79,7 +86,8 @@ class SectionsTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
             selectedMovie = moviesInSections[currentSectionOfTable - 3][indexPath.row]
             self.cellDelegate?.openFilm(selectedMovie)
         } else {
-            //нужно по идее запускать поиск по жанрам: привязать к индексу картинки поиск по жанру?
+            let selectedGenre = GenresMDB.allStringCases[indexPath.row]
+            self.genreDelegate?.openFilmsByGenre(at: selectedGenre)
             
         }
     

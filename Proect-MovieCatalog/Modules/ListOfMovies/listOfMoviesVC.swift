@@ -14,12 +14,13 @@ class listOfMoviesVC: UIViewController, UICollectionViewDataSource, UICollection
     var currentSectionOfTable: Int!
     var moviesInSections: [[MovieMDB]] = []
     
+    private var viewModel: FilmsByGenreModelProtocol = FilmsByGenreModel()
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if currentSectionOfTable != SectionsOfMain.allStringCases.firstIndex(of: "Жанры") {
             return moviesInSections[currentSectionOfTable - 3].count
         } else {
-            return GenresMDB.allStringCases.count  //ВНИМАНИЕ - переделать на список апо жанру
+            return GenresMDB.allStringCases.count
         }
     }
     
@@ -29,7 +30,7 @@ class listOfMoviesVC: UIViewController, UICollectionViewDataSource, UICollection
              if currentSectionOfTable != SectionsOfMain.allStringCases.firstIndex(of: "Жанры") {
                  cell?.setup(movie: moviesInSections[currentSectionOfTable - 3][indexPath.row])
              } else {
-                 cell?.setup2(genre: GenresMDB.allCases[indexPath.row]) //- переделать
+                 cell?.setup2(genre: GenresMDB.allCases[indexPath.row])
                  
              }
              return cell ?? UICollectionViewCell()
@@ -55,12 +56,17 @@ class listOfMoviesVC: UIViewController, UICollectionViewDataSource, UICollection
             nextVC.movie = selectedMovie
             navigationController?.pushViewController(nextVC, animated: true)
         } else {
-            //нужно по идее запускать поиск по жанрам: привязать к индексу картинки поиск по жанру?
-            
+            let selectedGenre = GenresMDB.allStringCases[indexPath.row]
+            viewModel.getMovies(genre: selectedGenre)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let nextVC = storyboard.instantiateViewController(withIdentifier: "MoviesByGenre") as! MoviesByGenre
+            nextVC.moviesByGenre = viewModel.moviesByGenre
+            navigationController?.pushViewController(nextVC, animated: true)
+          
         }
     }
     
- 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -96,6 +102,5 @@ class listOfMoviesVC: UIViewController, UICollectionViewDataSource, UICollection
     }
     
 }
-
 
 

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FirstVC: UIViewController, UITableViewDelegate, UITableViewDataSource, SectionButtonDelegate, SelectedCollectionCellDelegate {
+class FirstVC: UIViewController, UITableViewDelegate, UITableViewDataSource, SectionButtonDelegate, SelectedCollectionCellDelegate, SelectedGenreDelegate {
     
    
     @IBOutlet private weak var tableView: UITableView!
@@ -25,6 +25,7 @@ class FirstVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Sec
     }
     
     private var viewModel: FirstViewModelProtocol = FirstViewModel()
+    private var genreViewModel: FilmsByGenreModelProtocol = FilmsByGenreModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -106,6 +107,8 @@ class FirstVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Sec
         
         cell?.delegate = self
         cell?.cellDelegate = self
+        cell?.genreDelegate = self
+            
         cell?.indexPath = indexPath
         cell?.moviesInSections = viewModel.moviesInSectionsMDB
         
@@ -147,4 +150,16 @@ class FirstVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Sec
 }
   
 
+        func openFilmsByGenre(at genreNum: GenresMDB.RawValue) {
+            genreViewModel.getMovies(genre: genreNum)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let nextVC = storyboard.instantiateViewController(withIdentifier: "MoviesByGenre") as! MoviesByGenre
+            nextVC.moviesByGenre =  genreViewModel.moviesByGenre
+            navigationController?.pushViewController(nextVC, animated: true)
+            
+    }
+
+  
+    
+    
 }
