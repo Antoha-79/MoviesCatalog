@@ -32,75 +32,78 @@ final class FirstViewModel: FirstViewModelProtocol {
     private lazy var networkService = NetworkService()
     
     func getMovies() {
-        
-   /*     networkService.getMoviesTest { [weak self] movies, error in
-            if let error = error {
-                print("Error: \(#function) \(error.localizedDescription)")
-                return
-            }
-            if !movies.isEmpty {
-                self?.moviesInSectionsMDB.append(movies) //= moviesN
-                
-                print("111111: \(self?.moviesInSectionsMDB.count)")
-                print("222222 poster: \(self?.moviesInSectionsMDB.first?.first?.poster_path)")
+
+            let groupLoading = DispatchGroup()
             
-                DispatchQueue.main.async {
-                    self?.moviesDidLoad?()
+            DispatchQueue.global(qos: .userInitiated).async(group: groupLoading) {
+                self.networkService.getMovies(.top) { [weak self] movies, error in
+                if let error = error {
+                    print("Error: \(#function) \(error.localizedDescription)")
+                    return
                 }
+                if !movies.isEmpty {
+                    self?.moviesInSectionsMDB.append(movies)
+                    
+                    print("TOP movies count: \(movies.count)")
+                    print("movies count: \(self?.moviesInSectionsMDB.count)")
+                    print("TOP movies: \(self?.moviesInSectionsMDB.first?.count)")
+                    print("TOP movies: \(movies.first?.title)")
             }
-        }
-  */
-        
-   
-        networkService.getMovies(.top) { [weak self] movies, error in
-            if let error = error {
-                print("Error: \(#function) \(error.localizedDescription)")
-                return
-            }
-            if !movies.isEmpty {
-                self?.moviesInSectionsMDB.append(movies)
-                
-                print("TOP movies: \(movies.count)")
-        }  
-    }
-        
-        networkService.getMovies(.newFilms) { [weak self] movies, error in
-            if let error = error {
-                print("Error: \(#function) \(error.localizedDescription)")
-                return
-            }
-            if !movies.isEmpty {
-                self?.moviesInSectionsMDB.append(movies)
-                
-                print("NEW movies: \(movies.count)")
-        }
-    }
-   
-        networkService.getMovies(.spanishFilms) { [weak self] movies, error in
-            if let error = error {
-                print("Error: \(#function) \(error.localizedDescription)")
-                return
-            }
-            if !movies.isEmpty {
-                self?.moviesInSectionsMDB.append(movies)
-                
-                print("SPANISH movies: \(movies.count)")
-        }
-    }
-        
-        networkService.getMovies(.actionFilms) { [weak self] movies, error in
-            if let error = error {
-                print("Error: \(#function) \(error.localizedDescription)")
-                return
-            }
-            if !movies.isEmpty {
-                self?.moviesInSectionsMDB.append(movies)
-                
-                print("ACTION movies: \(movies.count)")
+                 
         }
     }
 
-      
+            DispatchQueue.global(qos: .userInitiated).async(group: groupLoading) {
+                self.networkService.getMovies(.newFilms) { [weak self] movies, error in
+                if let error = error {
+                    print("Error: \(#function) \(error.localizedDescription)")
+                    return
+                }
+                if !movies.isEmpty {
+                    self?.moviesInSectionsMDB.append(movies)
+                    
+                    print("NEW movies count: \(movies.count)")
+                    print("movies count: \(self?.moviesInSectionsMDB.count)")
+                   // print("TOP movies: \(self?.moviesInSectionsMDB.first)")
+                    print("NEW movies: \(movies.first?.title)")
+            }
+                
+        }
     }
+
+            DispatchQueue.global(qos: .userInitiated).async(group: groupLoading) {
+                self.networkService.getMovies(.spanishFilms) { [weak self] movies, error in
+                if let error = error {
+                    print("Error: \(#function) \(error.localizedDescription)")
+                    return
+                }
+                if !movies.isEmpty {
+                    self?.moviesInSectionsMDB.append(movies)
+                    
+                    print("SPANISH movies: \(movies.count)")
+            }
+                 
+        }
+    }
+        
+            DispatchQueue.global(qos: .userInitiated).async(group: groupLoading) {
+                self.networkService.getMovies(.actionFilms) { [weak self] movies, error in
+                if let error = error {
+                    print("Error: \(#function) \(error.localizedDescription)")
+                    return
+                }
+                if !movies.isEmpty {
+                    self?.moviesInSectionsMDB.append(movies)
+                    
+                    print("ACTION movies: \(movies.count)")
+                    print("movies count: \(self?.moviesInSectionsMDB.count)")
+            }
+              
+        }
+    }
+            groupLoading.notify(queue: .main) {
+                print("загрузка завершена")
+            }
+        }
     
 }
