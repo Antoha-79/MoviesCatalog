@@ -30,7 +30,7 @@ final class DownloadPoster: UIImageView {
     }
 
     
-    func cancel() { // отменяет загрузку если ...
+    func cancel() { 
         downloadTask?.cancel()
         downloadTask = nil
     }

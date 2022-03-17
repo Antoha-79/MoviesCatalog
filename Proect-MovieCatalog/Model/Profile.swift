@@ -16,7 +16,6 @@ enum SectionsOfMain: String, CaseIterable {
     case banner = "banner" // статичный баннер-картинка
     case top = "ТОП"
     case new = "Новинки"
-    //case serials = "Сериалы"
     case spanish = "На испанском языке"
     case action = "Боевики"
     case genres = "Жанры"
@@ -28,11 +27,6 @@ enum SectionsOfMain: String, CaseIterable {
     }
 }
 
-struct Collection {  // пока нигде не использую
-    var id: Int
-    var name: String
-    var overview: String?
-}
 
 enum GenresMDB: Int, CaseIterable {
     case action = 28
@@ -94,28 +88,18 @@ struct GenreString {
 
 
 struct MovieResponse: Decodable {
-    //var page: Int
     var results: [MovieMDB]
-   // var total_pages: Int
-    //var total_results: Int
-    
+
     enum CodingKeys: String, CodingKey {
-       // case page
         case results
-       // case total_pages
-       // case total_results
     }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        
-       // self.page = try container.decode(Int.self, forKey: .page)
         self.results = try container.decode([MovieMDB].self, forKey: .results)
-       // self.total_pages = try container.decode(Int.self, forKey: .total_pages)
-       // self.total_results = try container.decode(Int.self, forKey: .total_results)
         }
         
-    }
+}
 
  
 struct MovieMDB: Decodable {

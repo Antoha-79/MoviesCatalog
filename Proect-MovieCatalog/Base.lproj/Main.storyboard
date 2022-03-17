@@ -251,7 +251,9 @@
                                     <constraint firstAttribute="height" constant="44" id="KiC-dZ-pjo"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem title="Item" id="FQ7-mb-qOB"/>
+                                    <barButtonItem image="house" catalog="system" id="FQ7-mb-qOB">
+                                        <color key="tintColor" systemColor="systemGrayColor"/>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -678,6 +680,7 @@
     <resources>
         <image name="arrow.left" catalog="system" width="128" height="98"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
+        <image name="house" catalog="system" width="128" height="106"/>
         <image name="top_poster" width="1280" height="623"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
