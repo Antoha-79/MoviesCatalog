@@ -20,21 +20,17 @@ class listOfMoviesVC: UIViewController, UICollectionViewDataSource, UICollection
             return moviesInSections[currentSectionOfTable - 3].count
         } else {
             return GenresMDB.allStringCases.count  //ВНИМАНИЕ - переделать на список апо жанру
-           
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "listOfMoviesCollectVCell", for: indexPath) as? listOfMoviesCollectVCell
-       
-          // cell?.setup(movie: moviesInSections[currentSectionOfTable][indexPath.row])
-          //  return cell ?? UICollectionViewCell()
-    
+        
              if currentSectionOfTable != SectionsOfMain.allStringCases.firstIndex(of: "Жанры") {
                  cell?.setup(movie: moviesInSections[currentSectionOfTable - 3][indexPath.row])
              } else {
                  cell?.setup2(genre: GenresMDB.allCases[indexPath.row]) //- переделать
-                 //cell?.setup(movie: moviesInSectionsMDB[currentSectionOfTable - 3][indexPath.row]) //временно
+                 
              }
              return cell ?? UICollectionViewCell()
         
@@ -42,38 +38,36 @@ class listOfMoviesVC: UIViewController, UICollectionViewDataSource, UICollection
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if currentSectionOfTable != SectionsOfMain.allStringCases.firstIndex(of: "Жанры") {
-            //return CGSize(width: 118.0, height: 268.0) // 143*210
-            return CGSize(width: (UIScreen.main.bounds.width - 15.0*3) / 2, height: 243)
-        } else {
             return CGSize(width: 118.0, height: 268.0)
+            //return CGSize(width: (UIScreen.main.bounds.width - 15.0*3) / 2, height: 268)
+        } else {
+            //return CGSize(width: 180.0, height: 268.0)
+            return CGSize(width: (UIScreen.main.bounds.width - 15.0*3) / 2, height: (UIScreen.main.bounds.width - 15.0*3) / 2)
         }
-       // return CGSize(width: (UIScreen.main.bounds.width - 30.0 - 15*2) / 3, height: 210)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedMovie = moviesInSections[currentSectionOfTable - 3][indexPath.row]
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let nextVC = storyboard.instantiateViewController(withIdentifier: "TheMovieVC") as! TheMovieVC
-        nextVC.movie = selectedMovie
-        navigationController?.pushViewController(nextVC, animated: true)
+        
+        if currentSectionOfTable != SectionsOfMain.allStringCases.firstIndex(of: "Жанры") {
+            let selectedMovie = moviesInSections[currentSectionOfTable - 3][indexPath.row]
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let nextVC = storyboard.instantiateViewController(withIdentifier: "TheMovieVC") as! TheMovieVC
+            nextVC.movie = selectedMovie
+            navigationController?.pushViewController(nextVC, animated: true)
+        } else {
+            //нужно по идее запускать поиск по жанрам: привязать к индексу картинки поиск по жанру?
+            
+        }
     }
     
-    
-   
-    
-
-    
-    
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         collectionView.dataSource = self
         collectionView.delegate = self
         
-
         setLeftAlignTitleView(font: .systemFont(ofSize: 20, weight: .bold), text: "На главную", textColor: .black)
- 
-  
     }
     
   
@@ -101,7 +95,6 @@ class listOfMoviesVC: UIViewController, UICollectionViewDataSource, UICollection
         navigationController?.popViewController(animated: true)
     }
     
-
 }
 
 

@@ -69,13 +69,13 @@ class TheMovieVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             return 550.0
             
         } else if indexPath.section == 1 {
-            return 120.0
+            return 200.0
             
         } else if indexPath.section == 2 {
-            return 120.0
+            return 1.0 // пока нет трейлеров или кадров из фильма
             
         } else {
-            return 120.0
+            return 100.0
     }
 }
 

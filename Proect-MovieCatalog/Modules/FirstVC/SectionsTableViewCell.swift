@@ -44,13 +44,7 @@ class SectionsTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-       // print("ПРОВЕРКА collect.view: \(moviesInSectionsMDB.count)")
-        print("")
         if currentSectionOfTable != SectionsOfMain.allStringCases.firstIndex(of: "Жанры") {
-           
-            print("ТЕСТ currentSectionOfTable:  \(currentSectionOfTable)")
-            print("ТЕСТ moviesInSections:  \(moviesInSections.count)")
-           
             return moviesInSections[currentSectionOfTable - 3].count
         } else {
             return GenresMDB.allStringCases.count
@@ -75,15 +69,20 @@ class SectionsTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColl
         } else {
             return CGSize(width: 240.0, height: 240.0)
         }
-       // return CGSize(width: (UIScreen.main.bounds.width - 30.0 - 15*2) / 3, height: 210)
     }
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedMovie: MovieMDB!
-        selectedMovie = moviesInSections[currentSectionOfTable - 3][indexPath.row]
-        self.cellDelegate?.openFilm(selectedMovie)
        
+        if currentSectionOfTable != SectionsOfMain.allStringCases.firstIndex(of: "Жанры") {
+            let selectedMovie: MovieMDB!
+            selectedMovie = moviesInSections[currentSectionOfTable - 3][indexPath.row]
+            self.cellDelegate?.openFilm(selectedMovie)
+        } else {
+            //нужно по идее запускать поиск по жанрам: привязать к индексу картинки поиск по жанру?
+            
+        }
+    
     }
     
     

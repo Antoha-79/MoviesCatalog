@@ -19,13 +19,7 @@ protocol FirstViewModelProtocol: AnyObject {
 }
 
 final class FirstViewModel: FirstViewModelProtocol {
-    
-    // private var topFilmsMDB: [MovieMDB] = []
-    // private var newFilmsMDB: [MovieMDB] = []
-    // private var spanishFilmsMDB: [MovieMDB] = []
-    // private var actionFilmsMDB: [MovieMDB] = []
-    
-    
+   
     var moviesInSectionsMDB: [[MovieMDB]] = [] 
     var moviesDidLoad: (() -> Void)?
     
@@ -46,11 +40,6 @@ final class FirstViewModel: FirstViewModelProtocol {
                 }
                 if !movies.isEmpty {
                     self?.moviesInSectionsMDB.append(movies)
-                    
-                    print("TOP movies count: \(movies.count)")
-                    print("movies count: \(self?.moviesInSectionsMDB.count)")
-                    print("TOP movies: \(self?.moviesInSectionsMDB.first?.count)")
-                    print("TOP movies: \(movies.first?.title)")
             }
                  
         }
@@ -64,11 +53,6 @@ final class FirstViewModel: FirstViewModelProtocol {
                 }
                 if !movies.isEmpty {
                     self?.moviesInSectionsMDB.append(movies)
-                    
-                    print("NEW movies count: \(movies.count)")
-                    print("movies count: \(self?.moviesInSectionsMDB.count)")
-                   // print("TOP movies: \(self?.moviesInSectionsMDB.first)")
-                    print("NEW movies: \(movies.first?.title)")
             }
                 
         }
@@ -82,8 +66,6 @@ final class FirstViewModel: FirstViewModelProtocol {
                 }
                 if !movies.isEmpty {
                     self?.moviesInSectionsMDB.append(movies)
-                    
-                    print("SPANISH movies: \(movies.count)")
             }
                  
         }
@@ -97,9 +79,6 @@ final class FirstViewModel: FirstViewModelProtocol {
                 }
                 if !movies.isEmpty {
                     self?.moviesInSectionsMDB.append(movies)
-                    
-                    print("ACTION movies: \(movies.count)")
-                    print("movies count: \(self?.moviesInSectionsMDB.count)")
             }
               
         }

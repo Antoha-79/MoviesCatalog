@@ -16,8 +16,8 @@ enum SectionsOfMain: String, CaseIterable {
     case banner = "banner" // статичный баннер-картинка
     case top = "ТОП"
     case new = "Новинки"
-    case serials = "Сериалы"
-    //case spanish = "На испанском языке"
+    //case serials = "Сериалы"
+    case spanish = "На испанском языке"
     case action = "Боевики"
     case genres = "Жанры"
     
@@ -26,115 +26,150 @@ enum SectionsOfMain: String, CaseIterable {
             return section.rawValue
         }
     }
-    
-    var quantity: Int {   // вроде нигде пока не использовал это ((
-        switch self {
-        case .appName: return 1
-        case .menu: return    mainMenu.count
-        case .banner: return  1
-        case .top: return     topFilms.count
-        case .new: return     newFilms.count
-        case .serials: return serialsFilms.count
-        //case .spanish: return spanishFilms.count
-        case .action: return  actionFilms.count
-        case .genres: return  moviesInCatalog.count // все фильмы
-        }
-    }
-    
-    
 }
 
-enum Genres: String, CaseIterable {
-    case action = "Боевики"
-    case drama = "Драмы"
-    case comedy = "Комедии"
-    case thriller = "Триллеры"
-    case fiction = "Фантастика"
-    case melodrama = "Мелодрамы"
-    case horror = "Ужасы"
-    case documentary = "Документальные"
-    case adventure = "Приключения"
-    case musical = "Мюзиклы"
-    case animation = "Мультфильмы"
-    case family = "Семейные"
-    case fantasy = "Фэнтези"
+struct Collection {  // пока нигде не использую
+    var id: Int
+    var name: String
+    var overview: String?
+}
+
+enum GenresMDB: Int, CaseIterable {
+    case action = 28
+    case adventure = 12
+    case animation = 16
+    case comedy = 35
+    case crime = 80
+    case documentary = 99
+    case drama = 18
+    case family = 10751
+    case fantasy = 14
+    case history = 36
+    case horror = 27
+    case music = 10402
+    case mystery = 9648
+    case romance = 10749
+    case ScienceFiction = 878
+    case TVMovie = 10770
+    case thriller = 53
+    case war = 10752
+    case western = 37
     
-    
-    static var allStringCases: [String] {
+    static var allStringCases: [Int] {
         return allCases.map {genre in
             return genre.rawValue
         }
-    }
-    
+}
     var picture: UIImage? {
         switch self {
         case .action:   return UIImage(named: "action")
-        case .drama:    return UIImage(named: "drama")
-        case .comedy:   return UIImage(named: "comedy")
-        case .thriller: return UIImage(named: "comedy") // нет
-        case .fiction:  return UIImage(named: "fiction")
-        case .melodrama: return UIImage(named: "comedy") // нет
-        case .horror:   return UIImage(named: "horror")
-        case .documentary: return UIImage(named: "comedy") // нет
         case .adventure: return UIImage(named: "adventure")
-        case .musical:  return UIImage(named: "musical")
         case .animation: return UIImage(named: "animation")
+        case .comedy:   return UIImage(named: "comedy")
+        case .crime:   return UIImage(named: "comedy") // нет
+        case .documentary:   return UIImage(named: "comedy") // нет
+        case .drama:    return UIImage(named: "drama")
         case .family:   return UIImage(named: "comedy") // нет
         case .fantasy:  return UIImage(named: "comedy") // нет
+        case .history:   return UIImage(named: "horror") // нет
+        case .horror:   return UIImage(named: "horror")
+        case .music:  return UIImage(named: "musical")
+        case .mystery:  return UIImage(named: "musical") // нет
+        case .romance:  return UIImage(named: "fiction") // нет
+        case .ScienceFiction:  return UIImage(named: "fiction")
+        case .TVMovie: return UIImage(named: "comedy") // нет
+        case .thriller: return UIImage(named: "comedy") // нет
+        case .war: return UIImage(named: "animation") // нет
+        case .western: return UIImage(named: "animation") // нет
         }
     }
     
-    
 }
 
-struct Movie {
-    var nameEng: String
-    var nameRus: String
-    var genre: [Genres]
-    var description: String
-    var image: UIImage?
-   
-    // SectionsOfMain
-    var top: Bool
-    var dateOfPremiere: Date
-    var new: Bool  {
-        if (Date().timeIntervalSince1970 - dateOfPremiere.timeIntervalSince1970) < 45*24*60*60 {
-        }
-        return true
-    }
-    var serials: Bool
-    //var spanish: Bool
+
+struct GenreString {
     
+    var genreName: [Int:String] = [28: "Боевик", 12: "Приключения", 16: "Мультфильм", 35: "Комедия", 80: "Криминал", 99: "Документальный", 18: "Драма", 10751: "Семейный", 14: "Фэнтези", 36: "Исторический", 27: "Ужасы", 10402: "Мюзикл", 9648: "Мистика", 10749: "Романтический", 878: "Научная Фантастика", 10770: "TV-фильм", 53: "Трилер", 10752: "Военный", 37: "Вестерн"]
 }
 
-var moviesInCatalog: [Movie] = [
-    Movie(nameEng: "Dune: Part One", nameRus: "Дюна", genre: [.fiction, .adventure, .drama, .action], description: "Атрейдесы прибывают на планету, где им никто не рад. Тимоти Шаламе в фантастическом эпосе Дени Вильнёва", image: UIImage(named: "film-Duna-1"), top: true, dateOfPremiere: Date(), serials: false),
-    Movie(nameEng: "Raya and the Last Dragon", nameRus: "Райя и последний дракон", genre: [.adventure, .drama, .animation, .fantasy, .comedy, .family], description: "Дочь вождя ищет магическое существо в надежде спасти мир. Новая работа режиссера «Города героев» для Disney", image: UIImage(named: "film_Raja-1"), top: true, dateOfPremiere: Date(), serials: false),
-    Movie(nameEng: "Free Guy", nameRus: "Главный герой", genre: [.comedy, .fiction, .action, .melodrama], description: "Банковский клерк обнаруживает, что он персонаж видеоигры. Фантастическая экшен-комедия с Райаном Рейнольдсом", image: UIImage(named: "film-FreeGue-1"), top: true, dateOfPremiere: Date(), serials: false),
-    Movie(nameEng: "The Rookie", nameRus: "Новичок", genre: [.fiction, .adventure, .drama, .action], description: "Начинать с чистого листа нелегко, особенно в полиции Лос-Анджелеса - новичка встречают не очень", image: UIImage(named: "film_Rookie-1"), top: false, dateOfPremiere: Date(), serials: true),
-    Movie(nameEng: "Dune: Part One", nameRus: "БББ", genre: [.fiction, .adventure, .drama, .action], description: "Атрейдесы прибывают на планету, где им никто не рад. Тимоти Шаламе в фантастическом эпосе Дени Вильнёва", image: UIImage(named: "action"), top: false, dateOfPremiere: Date(), serials: true),
-    Movie(nameEng: "Dune: Part One", nameRus: "УЖЖас", genre: [.fiction, .adventure, .drama, .action], description: "Атрейдесы прибывают на планету, где им никто не рад. Тимоти Шаламе в фантастическом эпосе Дени Вильнёва", image: UIImage(named: "horror"), top: false, dateOfPremiere: Date(), serials: false),
-    Movie(nameEng: "Dune: Part One", nameRus: "ХаХа", genre: [.fiction, .adventure, .drama, .action], description: "Атрейдесы прибывают на планету, где им никто не рад. Тимоти Шаламе в фантастическом эпосе Дени Вильнёва", image: UIImage(named: "comedy"), top: true, dateOfPremiere: Date(), serials: false)
-]
 
-
-//var moviesInSections = [[Movie]]()  //заполнился массив в FirstVC  в viewDidLoad (нужно внутри функции заполнять массив)
+struct MovieResponse: Decodable {
+    //var page: Int
+    var results: [MovieMDB]
+   // var total_pages: Int
+    //var total_results: Int
     
-var topFilms = moviesInCatalog.filter{$0.top == true}
-var newFilms = moviesInCatalog.filter{$0.new == true}
-var serialsFilms = moviesInCatalog.filter{$0.serials == true}
-var actionFilms = moviesInCatalog.filter{$0.genre.contains(.action)} //test - ".action"
-//var spanishFilms = moviesInCatalog.filter{$0.spanish == true}
-
-
-func filmsByGenre(genre: Genres) -> [Movie] {
-    return moviesInCatalog.filter{$0.genre.contains(genre)}
+    enum CodingKeys: String, CodingKey {
+       // case page
+        case results
+       // case total_pages
+       // case total_results
     }
-
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
         
+       // self.page = try container.decode(Int.self, forKey: .page)
+        self.results = try container.decode([MovieMDB].self, forKey: .results)
+       // self.total_pages = try container.decode(Int.self, forKey: .total_pages)
+       // self.total_results = try container.decode(Int.self, forKey: .total_results)
+        }
+        
+    }
 
-                        
-                        
-                        
-                     
-
+ 
+struct MovieMDB: Decodable {
+    
+    var adult: Bool?
+    var backdrop_path: String?
+    var genre_ids: [Int]?
+    var id: Int
+    var original_language: String
+    var original_title: String
+    var overview: String
+    var popularity: Double
+    var poster_path: String?
+    var release_date: String
+    var title: String
+    var video: Bool
+    var vote_average: Double
+    var vote_count: Int
+    
+    
+    enum CodingKeys: String, CodingKey {
+        case adult
+        case backdrop_path
+        case genre_ids
+        case id
+        case language = "original_language"
+        case titleOriginal = "original_title"
+        case description = "overview"
+        case popularity
+        case poster = "poster_path"
+        case release_date
+        case title = "title"
+        case video
+        case imdbRating = "vote_average"
+        case imdbCount = "vote_count"
+    }
+        
+        init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            
+            self.adult = try? container.decode(Bool.self, forKey: .adult)
+            self.backdrop_path = try? container.decode(String.self, forKey: .backdrop_path)
+            self.genre_ids = try container.decode([Int].self, forKey: .genre_ids)
+            self.id = try container.decode(Int.self, forKey: .id)
+            self.original_language = try container.decode(String.self, forKey: .language)
+            self.original_title = try container.decode(String.self, forKey: .titleOriginal)
+            self.overview = try container.decode(String.self, forKey: .description)
+            self.popularity = try container.decode(Double.self, forKey: .popularity)
+            self.poster_path = try? container.decode(String.self, forKey: .poster)
+            self.release_date = try container.decode(String.self, forKey: .release_date)
+            self.title = try container.decode(String.self, forKey: .title)
+            self.video = try container.decode(Bool.self, forKey: .video)
+            self.vote_average = try container.decode(Double.self, forKey: .imdbRating)
+            self.vote_count = try container.decode(Int.self, forKey: .imdbCount)
+            
+        }
+}

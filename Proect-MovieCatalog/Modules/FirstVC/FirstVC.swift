@@ -37,13 +37,6 @@ class FirstVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Sec
     
         setupTitle()
         
-   /*     moviesInSections.append(topFilms)
-        moviesInSections.append(newFilms)
-        moviesInSections.append(serialsFilms)
-        moviesInSections.append(actionFilms)
-        moviesInSections.append(filmsByGenre(genre: .comedy))
-        //moviesInSections.append(spanishFilms)
-  */
     }
     
     
@@ -115,9 +108,6 @@ class FirstVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Sec
         cell?.cellDelegate = self
         cell?.indexPath = indexPath
         cell?.moviesInSections = viewModel.moviesInSectionsMDB
-            print("")
-            print("передаем в SectionsTable test moviesInSections: \(viewModel.moviesInSectionsMDB.count)")
-            print("")
         
             return cell ?? UITableViewCell()
         }
@@ -144,9 +134,6 @@ class FirstVC: UIViewController, UITableViewDelegate, UITableViewDataSource, Sec
          let nextVC = storyboard.instantiateViewController(withIdentifier: "listOfMoviesVC") as! listOfMoviesVC
         nextVC.currentSectionOfTable = index.section
         nextVC.moviesInSections = viewModel.moviesInSectionsMDB
-        print("")
-        print("openFilm test moviesInSections: \(viewModel.moviesInSectionsMDB.count)")
-        print("")
         navigationController?.pushViewController(nextVC, animated: true)
        
     }
