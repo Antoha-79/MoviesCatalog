@@ -37,12 +37,12 @@ class SectionsCollectionViewCell: UICollectionViewCell {
  }
  
   
-    func setup2(genre: GenresMDB) {   // ВНИМАНИЕ !!!! ЗАМЕНИТЬ НА MDB
+    func setup2(genre: GenresMDB) {  
         imageView.image = genre.picture
         titleLabel.text = GenreString().genreName[genre.rawValue]
         descriptionLabel.text = ""
         
-        // не уверен!!! Продумать когда какой description  !!!!!!!!
+      
     }    
     
 }
