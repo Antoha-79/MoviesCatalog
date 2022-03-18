@@ -34,6 +34,7 @@ final class FilmsByGenreModel: FilmsByGenreModelProtocol {
                 }
                 if !movies.isEmpty {
                     self?.moviesByGenre = movies
+                    self?.moviesDidLoad?()
             }
                  
         }

@@ -14,7 +14,7 @@ class listOfMoviesVC: UIViewController, UICollectionViewDataSource, UICollection
     var currentSectionOfTable: Int!
     var moviesInSections: [[MovieMDB]] = []
     
-    private var viewModel: FilmsByGenreModelProtocol = FilmsByGenreModel()
+    private var genreViewModel: FilmsByGenreModelProtocol = FilmsByGenreModel()
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if currentSectionOfTable != SectionsOfMain.allStringCases.firstIndex(of: "Жанры") {
@@ -42,7 +42,6 @@ class listOfMoviesVC: UIViewController, UICollectionViewDataSource, UICollection
             return CGSize(width: 118.0, height: 268.0)
             //return CGSize(width: (UIScreen.main.bounds.width - 15.0*3) / 2, height: 268)
         } else {
-            //return CGSize(width: 180.0, height: 268.0)
             return CGSize(width: (UIScreen.main.bounds.width - 15.0*3) / 2, height: (UIScreen.main.bounds.width - 15.0*3) / 2)
         }
     }
@@ -57,10 +56,10 @@ class listOfMoviesVC: UIViewController, UICollectionViewDataSource, UICollection
             navigationController?.pushViewController(nextVC, animated: true)
         } else {
             let selectedGenre = GenresMDB.allStringCases[indexPath.row]
-            viewModel.getMovies(genre: selectedGenre)
+            genreViewModel.getMovies(genre: selectedGenre)
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let nextVC = storyboard.instantiateViewController(withIdentifier: "MoviesByGenre") as! MoviesByGenre
-            nextVC.moviesByGenre = viewModel.moviesByGenre
+            nextVC.moviesByGenre = genreViewModel.moviesByGenre
             navigationController?.pushViewController(nextVC, animated: true)
           
         }

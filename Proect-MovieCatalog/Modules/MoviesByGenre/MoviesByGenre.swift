@@ -23,13 +23,11 @@ class MoviesByGenre: UIViewController, UICollectionViewDataSource, UICollectionV
                  cell?.setup(movie: moviesByGenre[indexPath.row])
              
              return cell ?? UICollectionViewCell()
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
        
             return CGSize(width: 118.0, height: 268.0)
-     
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -39,7 +37,6 @@ class MoviesByGenre: UIViewController, UICollectionViewDataSource, UICollectionV
             let nextVC = storyboard.instantiateViewController(withIdentifier: "TheMovieVC") as! TheMovieVC
             nextVC.movie = selectedMovie
             navigationController?.pushViewController(nextVC, animated: true)
-     
     }
     
     override func viewDidLoad() {
