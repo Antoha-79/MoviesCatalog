@@ -34,6 +34,7 @@
 		5EAD6E7927E3934D00A1D98F /* FilmsByGenreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAD6E7827E3934D00A1D98F /* FilmsByGenreModel.swift */; };
 		5EAD6E7C27E3ACD500A1D98F /* MoviesByGenre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAD6E7B27E3ACD500A1D98F /* MoviesByGenre.swift */; };
 		5EAD6E8027E3AD8000A1D98F /* ByGenreCollectViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAD6E7F27E3AD8000A1D98F /* ByGenreCollectViewCell.swift */; };
+		5EAD6E8427E4611D00A1D98F /* ImageCacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAD6E8327E4611D00A1D98F /* ImageCacheService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +67,7 @@
 		5EAD6E7827E3934D00A1D98F /* FilmsByGenreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmsByGenreModel.swift; sourceTree = "<group>"; };
 		5EAD6E7B27E3ACD500A1D98F /* MoviesByGenre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesByGenre.swift; sourceTree = "<group>"; };
 		5EAD6E7F27E3AD8000A1D98F /* ByGenreCollectViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ByGenreCollectViewCell.swift; sourceTree = "<group>"; };
+		5EAD6E8327E4611D00A1D98F /* ImageCacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +191,7 @@
 			children = (
 				5E8A27FB27C503F600B53B52 /* NetworkService.swift */,
 				5E9000A827D7FE600036A76D /* DownloadPoster.swift */,
+				5EAD6E8327E4611D00A1D98F /* ImageCacheService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				5E8A27FC27C503F600B53B52 /* NetworkService.swift in Sources */,
 				5E7ACA9827C3DE3C00074EB3 /* TheMovieVC.swift in Sources */,
 				5E7ACA9127C127A200074EB3 /* MenuTableViewCell.swift in Sources */,
+				5EAD6E8427E4611D00A1D98F /* ImageCacheService.swift in Sources */,
 				5E0F4DD727A73BB200B55942 /* SectionsCollectionViewCell.swift in Sources */,
 				5EAD6E7927E3934D00A1D98F /* FilmsByGenreModel.swift in Sources */,
 				5E7ACA8F27C1276F00074EB3 /* AppNameTableViewCell.swift in Sources */,

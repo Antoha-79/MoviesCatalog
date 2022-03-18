@@ -15,12 +15,17 @@ class listOfMoviesCollectVCell: UICollectionViewCell {
     @IBOutlet private weak var descriptionLabel: UILabel!
 
 func setup(movie: MovieMDB) {
-    imageView.load(imageURLStr: movie.poster_path) { image in
-        self.imageView?.image = image
-    }
     
     titleLabel.text = movie.title
     descriptionLabel.text =  GenreString().genreName[movie.genre_ids?.first ?? 18]
+    
+    if let image = ImageCacheService.shared.load(movieId: String(movie.id)) {
+        imageView.image = image
+    } else {
+        imageView.load(imageURLStr: movie.poster_path) { image in
+            ImageCacheService.shared.save(movieId: String(movie.id), image: image)
+        }
+    }
     
 
 }

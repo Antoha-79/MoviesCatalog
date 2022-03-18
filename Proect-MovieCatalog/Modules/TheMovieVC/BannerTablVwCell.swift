@@ -18,15 +18,20 @@ class BannerTablVwCell: UITableViewCell {
     }
 
     func setup(movie: MovieMDB) {
-        bannerImage.load(imageURLStr: movie.poster_path) { image in
-            self.imageView?.image = image
+        
+        if let image = ImageCacheService.shared.load(movieId: String(movie.id)) {
+            bannerImage.image = image
+        } else {
+            bannerImage.load(imageURLStr: movie.poster_path) { image in
+                ImageCacheService.shared.save(movieId: String(movie.id), image: image)
+            }
         }
 }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
+       
     }
 
 }

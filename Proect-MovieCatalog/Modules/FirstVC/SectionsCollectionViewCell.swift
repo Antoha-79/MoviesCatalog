@@ -23,13 +23,16 @@ class SectionsCollectionViewCell: UICollectionViewCell {
    
  
  func setup(movie: MovieMDB) {
-     imageView.load(imageURLStr: movie.poster_path) { image in
-         self.imageView.image = image
-     }
      titleLabel.text = movie.original_title
-     descriptionLabel.text = GenreString().genreName[movie.genre_ids?.first ?? 18] 
+     descriptionLabel.text = GenreString().genreName[movie.genre_ids?.first ?? 18]
      
-     // не уверен!!! Продумать когда какой description  !!!!!!!!
+     if let image = ImageCacheService.shared.load(movieId: String(movie.id)) {
+         imageView.image = image
+     } else {
+         imageView.load(imageURLStr: movie.poster_path) { image in
+             ImageCacheService.shared.save(movieId: String(movie.id), image: image)
+         }
+     }
   
  }
  
