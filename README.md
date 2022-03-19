@@ -1,4 +1,9 @@
 # MoviesCatalog
-Интерфейс, работа с сетью (API, json), сохранение в кэш - выпускной проект на курсах
+Выпускной проект на курсах
 
-Выпускной проект: Network, NSCache, DispatchGroup, MVVN. TableView, CollectionView, Delegate, Protocol и прочее. 
+- работа с сетью: Network (API, json); 
+- сохранение в кэш: NSCache, DispatchGroup, MVVN;
+- многопоточность: DispatchGroup;
+- архитектура MVVM;
+- TableView, CollectionView, Delegate, Protocol и прочее. 
+
